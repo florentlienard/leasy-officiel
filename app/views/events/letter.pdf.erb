@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <%= wicked_pdf_stylesheet_link_tag 'application' %>
+  </head>
+
+
+  <body>
+  <div class="letterstyle">
+
+    <!-- header -->
+
+    <div class="letterhead">
+      <div class="letterhead-left">
+        <%= wicked_pdf_image_tag('logo_client.png', class: 'imageletter') %>
+        <p><strong>IMMO 3000</strong></p>
+        <p>16 rue des plantes</p>
+        <p>75002 PARIS</p>
+        <p><%= "#{current_user.first_name} #{current_user.last_name}" %></p>
+        <p><%= current_user.position %> </p>
+      </div>
+
+      <div class="letterhead-right">
+        <p><%= "#{@event.lease.tenant_first_name} #{@event.lease.tenant_name}" %></p>
+        <p><%=  @event.lease.tenant_address%></p>
+        <p>75017 PARIS</p>
+        <br>
+        <br>
+        <br>
+        <p>Paris, le <%= Date.today %> </p>
+      </div>
+    </div>
+
+    <!-- content -->
+    <div class="lettercontent">
+      <% case @event.description %>
+        <% when 'fin de bail' %>
+        <%= render 'events/letters/conge_renouv' %>
+        <% when 'retard loyer' %>
+        <%= render 'events/letters/relance_retard' %>
+      <% end %>
+    </div>
+
+    <!-- footer -->
+    <div class="letterfooter">
+      <%= wicked_pdf_image_tag 'signature.png' %>
+    </div>
+
+  </div>
+  </body>
+</html>

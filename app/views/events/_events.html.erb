@@ -1,0 +1,47 @@
+<div class="container container-white">
+  <table class="table table-hover background-transparent" style = "background-color: white;">
+    <thead class = "table-head-event-index">
+      <tr class = "table-head-event-index">
+        <th style = "width: 50px;" class = "table-head-event-index">PRIORITE</th>
+        <th style = "width: 150px;" class = "table-head-event-index">DESCRIPTION</th>
+        <th style = "width: 150px;" class = "table-head-event-index">DEADLINE</th>
+        <th style = "width: 200px;" class = "table-head-event-index">LOCATAIRE</th>
+        <th style = "width: 240px;" class = "table-head-event-index">ADRESSE</th>
+        <th class = "table-head-event-index" style = "width: 200px;">NATURE</th>
+        <th class = "table-head-event-index" style = "width: 100px;">LOYER (€/m)</th>
+        <th style = "width: 200px;" class = "table-head-event-index">BAILLEUR</th>
+      </tr>
+    </thead>
+    <tbody>
+    <% events.each do |event| %>
+        <tr class = "table-row-event-index" id="<%= event.id %>">
+          <td>
+            <% if event.emergency_level == "non-due" %>
+            <%= image_tag("Low.png", :width => 33, :height => 15) %>
+            <% elsif event.emergency_level == "due" %>
+            <%= image_tag("Middle.png", :width => 33, :height => 15) %>
+            <% elsif event.emergency_level == "overdue"%>
+            <%= image_tag("triangle.png", :width => 20, :height => 20, :class => align="center")%>
+            <% else %>
+            <%= image_tag("High.png", :width => 33, :height => 15) %>
+            <% end %>
+          </td>
+          <td> <%= event.description.capitalize %> </td>
+          <% date = event.end_date.to_date - Date.today%>
+          <td>
+            <%= event.description == "retard loyer" || event.description == "révision de loyer" ? "ns" : number_with_delimiter(date.to_i, :delimeter => " ").to_s.gsub(',',' ') + " jours" %>
+          </td>
+          <td> <%= event.lease.tenant_name %> </td>
+          <td> <%= event.lease.tenant_address+
+           " (lot ##{event.lease.num_lot})" %> </td>
+          <td> <%= event.lease.nature %> </td>
+          <td> <%= number_with_delimiter(event.lease.monthly_rent, :delimeter => " ").to_s.gsub(',', ' ') %> € </td>
+          <td> <%= event.lease.owner_name %> </td>
+        </tr>
+        <tr class="spacer">
+          <td class = "col_spacer" colspan="8"></td>
+        </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>

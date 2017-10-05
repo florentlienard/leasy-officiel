@@ -1,0 +1,58 @@
+
+<%=  render 'shared/nav_bar_index' %>
+
+<%= form_tag urgent_events_path, method: :get, remote: true, id: "filter-form" do %>
+<div class="spacer-checkboxes">
+</div>
+<%= render 'shared/checkbox_forms' %>
+<% end %>
+<div class="spacer-checkboxes-1">
+</div>
+
+<div id="events-container">
+  <%= render "events", events: @events %>
+</div>
+
+
+
+<% if Rails.env.production? %>
+  <script>
+  var turnObjToArray = function(obj) {
+    return [].map.call(obj, function(element) {
+      return element;
+    })
+  };
+
+  var intermediary = document.querySelectorAll('.table-row-event-index');
+
+  var linkedRows = turnObjToArray(intermediary)
+
+  if (linkedRows.length > 0) {
+    linkedRows.forEach((row) => {
+      row.addEventListener("click", function() {
+      window.location.href=`http://www.get-leasy.com/events/${event.target.parentNode.id}`;
+      });
+    })
+  }
+  </script>
+<% else %>
+  <script>
+  var turnObjToArray = function(obj) {
+    return [].map.call(obj, function(element) {
+      return element;
+    })
+  };
+
+  var intermediary = document.querySelectorAll('.table-row-event-index');
+
+  var linkedRows = turnObjToArray(intermediary)
+
+  if (linkedRows.length > 0) {
+    linkedRows.forEach((row) => {
+      row.addEventListener("click", function() {
+      window.location.href=`http://localhost:3000/events/${event.target.parentNode.id}`;
+      });
+    })
+  }
+  </script>
+<%end%>

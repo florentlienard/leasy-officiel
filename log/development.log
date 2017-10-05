@@ -1,0 +1,990 @@
+Started GET "/" for 127.0.0.1 at 2017-10-05 17:29:18 +0200
+  [1m[35m (7.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PagesController#home as HTML
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "events" WHERE "events"."description" = $1 AND "events"."to_do" = $2[0m  [["description", "révision de loyer"], ["to_do", "t"]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "events" WHERE "events"."description" = $1 AND "events"."to_do" = $2[0m  [["description", "retard loyer"], ["to_do", "t"]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "events" WHERE "events"."description" = $1 AND "events"."to_do" = $2[0m  [["description", "fin de bail"], ["to_do", "t"]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "events" WHERE "events"."to_do" = $1[0m  [["to_do", "t"]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "events" WHERE "events"."emergency_level" = $1 AND "events"."to_do" = $2[0m  [["emergency_level", "urgent"], ["to_do", "t"]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "events" WHERE "events"."emergency_level" = $1 AND "events"."to_do" = $2[0m  [["emergency_level", "urgent"], ["to_do", "t"]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "events" WHERE "events"."emergency_level" = $1[0m  [["emergency_level", "urgent"]]
+  [1m[36mEvent Load (0.5ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."status" = $1 AND "events"."emergency_level" = $2 AND "events"."to_do" = $3[0m  [["status", "tenant_to_notify"], ["emergency_level", "urgent"], ["to_do", "t"]]
+  [1m[36mBalanceDay Load (0.7ms)[0m  [1m[34mSELECT "balance_days".* FROM "balance_days"[0m
+  Rendering pages/home.html.erb within layouts/application
+  Rendered pages/_progressbar.html.erb (0.5ms)
+  Rendered pages/home.html.erb within layouts/application (9696.9ms)
+  Rendered shared/_nav_bar.html.erb (2.6ms)
+Completed 200 OK in 9814ms (Views: 9729.1ms | ActiveRecord: 13.9ms)
+
+
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2017-10-05 17:29:34 +0200
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"iSS4g8EwYd6KK5YgLdc0d9anuyqo1TY1lBntQUZMuUcg2+MPGWyTk/UDXlhL4JX5UkMZaqUtLv3Y0DG7En9TxQ=="}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 19ms (ActiveRecord: 1.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-10-05 17:29:34 +0200
+Processing by PagesController#home as HTML
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "events" WHERE "events"."description" = $1 AND "events"."to_do" = $2[0m  [["description", "révision de loyer"], ["to_do", "t"]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "events" WHERE "events"."description" = $1 AND "events"."to_do" = $2[0m  [["description", "retard loyer"], ["to_do", "t"]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "events" WHERE "events"."description" = $1 AND "events"."to_do" = $2[0m  [["description", "fin de bail"], ["to_do", "t"]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "events" WHERE "events"."to_do" = $1[0m  [["to_do", "t"]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "events" WHERE "events"."emergency_level" = $1 AND "events"."to_do" = $2[0m  [["emergency_level", "urgent"], ["to_do", "t"]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "events" WHERE "events"."emergency_level" = $1 AND "events"."to_do" = $2[0m  [["emergency_level", "urgent"], ["to_do", "t"]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "events" WHERE "events"."emergency_level" = $1[0m  [["emergency_level", "urgent"]]
+  [1m[36mEvent Load (0.4ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."status" = $1 AND "events"."emergency_level" = $2 AND "events"."to_do" = $3[0m  [["status", "tenant_to_notify"], ["emergency_level", "urgent"], ["to_do", "t"]]
+  [1m[36mBalanceDay Load (0.3ms)[0m  [1m[34mSELECT "balance_days".* FROM "balance_days"[0m
+  Rendering pages/home.html.erb within layouts/application
+  Rendered pages/_not_connected.html.erb (3.3ms)
+  Rendered pages/home.html.erb within layouts/application (7.1ms)
+Completed 200 OK in 56ms (Views: 35.5ms | ActiveRecord: 2.9ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2017-10-05 17:29:35 +0200
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/sessions/new.html.erb within layouts/application (96.7ms)
+Completed 200 OK in 129ms (Views: 125.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2017-10-05 17:29:47 +0200
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"wGXHTp1RuNPynVgak70TP/RXGz1Rvhg8Y6JAHbpt5h9x7S28OANRsqQz0GtP5oEvAbYEzKfT0ddAD1dQhigUNw==", "user"=>{"email"=>"vincent.feildel@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "vincent.feildel@gmail.com"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[33mUPDATE "users" SET "current_sign_in_at" = $1, "sign_in_count" = $2, "updated_at" = $3 WHERE "users"."id" = $4[0m  [["current_sign_in_at", "2017-10-05 15:29:47.650677"], ["sign_in_count", 2], ["updated_at", "2017-10-05 15:29:47.653326"], ["id", 1]]
+  [1m[35m (12.0ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 179ms (ActiveRecord: 13.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-10-05 17:29:47 +0200
+Processing by PagesController#home as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "events" WHERE "events"."description" = $1 AND "events"."to_do" = $2[0m  [["description", "révision de loyer"], ["to_do", "t"]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "events" WHERE "events"."description" = $1 AND "events"."to_do" = $2[0m  [["description", "retard loyer"], ["to_do", "t"]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "events" WHERE "events"."description" = $1 AND "events"."to_do" = $2[0m  [["description", "fin de bail"], ["to_do", "t"]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "events" WHERE "events"."to_do" = $1[0m  [["to_do", "t"]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "events" WHERE "events"."emergency_level" = $1 AND "events"."to_do" = $2[0m  [["emergency_level", "urgent"], ["to_do", "t"]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "events" WHERE "events"."emergency_level" = $1 AND "events"."to_do" = $2[0m  [["emergency_level", "urgent"], ["to_do", "t"]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "events" WHERE "events"."emergency_level" = $1[0m  [["emergency_level", "urgent"]]
+  [1m[36mEvent Load (0.8ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."status" = $1 AND "events"."emergency_level" = $2 AND "events"."to_do" = $3[0m  [["status", "tenant_to_notify"], ["emergency_level", "urgent"], ["to_do", "t"]]
+  [1m[36mBalanceDay Load (0.4ms)[0m  [1m[34mSELECT "balance_days".* FROM "balance_days"[0m
+  Rendering pages/home.html.erb within layouts/application
+  Rendered pages/_progressbar.html.erb (0.4ms)
+  Rendered pages/home.html.erb within layouts/application (8.2ms)
+  Rendered shared/_nav_bar.html.erb (2.9ms)
+Completed 200 OK in 54ms (Views: 36.9ms | ActiveRecord: 3.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-10-05 17:29:55 +0200
+Processing by PagesController#home as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "events" WHERE "events"."description" = $1 AND "events"."to_do" = $2[0m  [["description", "révision de loyer"], ["to_do", "t"]]
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "events" WHERE "events"."description" = $1 AND "events"."to_do" = $2[0m  [["description", "retard loyer"], ["to_do", "t"]]
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "events" WHERE "events"."description" = $1 AND "events"."to_do" = $2[0m  [["description", "fin de bail"], ["to_do", "t"]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "events" WHERE "events"."to_do" = $1[0m  [["to_do", "t"]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "events" WHERE "events"."emergency_level" = $1 AND "events"."to_do" = $2[0m  [["emergency_level", "urgent"], ["to_do", "t"]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "events" WHERE "events"."emergency_level" = $1 AND "events"."to_do" = $2[0m  [["emergency_level", "urgent"], ["to_do", "t"]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "events" WHERE "events"."emergency_level" = $1[0m  [["emergency_level", "urgent"]]
+  [1m[36mEvent Load (0.8ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."status" = $1 AND "events"."emergency_level" = $2 AND "events"."to_do" = $3[0m  [["status", "tenant_to_notify"], ["emergency_level", "urgent"], ["to_do", "t"]]
+  [1m[36mBalanceDay Load (2.1ms)[0m  [1m[34mSELECT "balance_days".* FROM "balance_days"[0m
+  Rendering pages/home.html.erb within layouts/application
+  Rendered pages/_progressbar.html.erb (0.9ms)
+  Rendered pages/home.html.erb within layouts/application (10.6ms)
+  Rendered shared/_nav_bar.html.erb (2.1ms)
+Completed 200 OK in 66ms (Views: 39.8ms | ActiveRecord: 7.5ms)
+
+
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2017-10-05 17:29:59 +0200
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"KFYrczDu0MgvOjvFiqoCVuFv8e5UjhdG3Bt/aJU7QKG9yCyXBkEW3xCWagTAAF1rQyeIRYxw2P3L3CoIaTNssQ=="}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 8ms (ActiveRecord: 1.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-10-05 17:29:59 +0200
+Processing by PagesController#home as HTML
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "events" WHERE "events"."description" = $1 AND "events"."to_do" = $2[0m  [["description", "révision de loyer"], ["to_do", "t"]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "events" WHERE "events"."description" = $1 AND "events"."to_do" = $2[0m  [["description", "retard loyer"], ["to_do", "t"]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "events" WHERE "events"."description" = $1 AND "events"."to_do" = $2[0m  [["description", "fin de bail"], ["to_do", "t"]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "events" WHERE "events"."to_do" = $1[0m  [["to_do", "t"]]
+  [1m[35m (1.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "events" WHERE "events"."emergency_level" = $1 AND "events"."to_do" = $2[0m  [["emergency_level", "urgent"], ["to_do", "t"]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "events" WHERE "events"."emergency_level" = $1 AND "events"."to_do" = $2[0m  [["emergency_level", "urgent"], ["to_do", "t"]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "events" WHERE "events"."emergency_level" = $1[0m  [["emergency_level", "urgent"]]
+  [1m[36mEvent Load (0.5ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."status" = $1 AND "events"."emergency_level" = $2 AND "events"."to_do" = $3[0m  [["status", "tenant_to_notify"], ["emergency_level", "urgent"], ["to_do", "t"]]
+  [1m[36mBalanceDay Load (0.4ms)[0m  [1m[34mSELECT "balance_days".* FROM "balance_days"[0m
+  Rendering pages/home.html.erb within layouts/application
+  Rendered pages/_not_connected.html.erb (4.5ms)
+  Rendered pages/home.html.erb within layouts/application (10.7ms)
+Completed 200 OK in 57ms (Views: 39.7ms | ActiveRecord: 4.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-10-05 17:31:48 +0200
+Processing by PagesController#home as HTML
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "events" WHERE "events"."description" = $1 AND "events"."to_do" = $2[0m  [["description", "révision de loyer"], ["to_do", "t"]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "events" WHERE "events"."description" = $1 AND "events"."to_do" = $2[0m  [["description", "retard loyer"], ["to_do", "t"]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "events" WHERE "events"."description" = $1 AND "events"."to_do" = $2[0m  [["description", "fin de bail"], ["to_do", "t"]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "events" WHERE "events"."to_do" = $1[0m  [["to_do", "t"]]
+  [1m[35m (5.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "events" WHERE "events"."emergency_level" = $1 AND "events"."to_do" = $2[0m  [["emergency_level", "urgent"], ["to_do", "t"]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "events" WHERE "events"."emergency_level" = $1 AND "events"."to_do" = $2[0m  [["emergency_level", "urgent"], ["to_do", "t"]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "events" WHERE "events"."emergency_level" = $1[0m  [["emergency_level", "urgent"]]
+  [1m[36mEvent Load (1.1ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."status" = $1 AND "events"."emergency_level" = $2 AND "events"."to_do" = $3[0m  [["status", "tenant_to_notify"], ["emergency_level", "urgent"], ["to_do", "t"]]
+  [1m[36mBalanceDay Load (0.4ms)[0m  [1m[34mSELECT "balance_days".* FROM "balance_days"[0m
+  Rendering pages/home.html.erb within layouts/application
+  Rendered pages/_not_connected.html.erb (19.4ms)
+  Rendered pages/home.html.erb within layouts/application (28.7ms)
+Completed 500 Internal Server Error in 80ms (ActiveRecord: 9.6ms)
+
+
+
+ActionView::Template::Error - The asset "paris-banner.png" is not present in the asset pipeline.:
+  /usr/local/Cellar/rbenv/1.1.1/versions/2.3.4/lib/ruby/gems/2.3.0/gems/actionview-5.1.3/lib/action_view/template/error.rb:67:in `initialize'
+  /usr/local/Cellar/rbenv/1.1.1/versions/2.3.4/lib/ruby/gems/2.3.0/gems/actionview-5.1.3/lib/action_view/template.rb:321:in `handle_render_error'
+  /usr/local/Cellar/rbenv/1.1.1/versions/2.3.4/lib/ruby/gems/2.3.0/gems/actionview-5.1.3/lib/action_view/template.rb:160:in `rescue in render'
+  /usr/local/Cellar/rbenv/1.1.1/versions/2.3.4/lib/ruby/gems/2.3.0/gems/actionview-5.1.3/lib/action_view/template.rb:155:in `render'
+  /usr/local/Cellar/rbenv/1.1.1/versions/2.3.4/lib/ruby/gems/2.3.0/gems/actionview-5.1.3/lib/action_view/renderer/partial_renderer.rb:342:in `block in render_partial'
+  /usr/local/Cellar/rbenv/1.1.1/versions/2.3.4/lib/ruby/gems/2.3.0/gems/actionview-5.1.3/lib/action_view/renderer/abstract_renderer.rb:42:in `block in instrument'
+  activesupport (5.1.3) lib/active_support/notifications.rb:166:in `block in instrument'
+  activesupport (5.1.3) lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+  activesupport (5.1.3) lib/active_support/notifications.rb:166:in `instrument'
+  /usr/local/Cellar/rbenv/1.1.1/versions/2.3.4/lib/ruby/gems/2.3.0/gems/actionview-5.1.3/lib/action_view/renderer/abstract_renderer.rb:41:in `instrument'
+  /usr/local/Cellar/rbenv/1.1.1/versions/2.3.4/lib/ruby/gems/2.3.0/gems/actionview-5.1.3/lib/action_view/renderer/partial_renderer.rb:331:in `render_partial'
+  /usr/local/Cellar/rbenv/1.1.1/versions/2.3.4/lib/ruby/gems/2.3.0/gems/actionview-5.1.3/lib/action_view/renderer/partial_renderer.rb:310:in `render'
+  /usr/local/Cellar/rbenv/1.1.1/versions/2.3.4/lib/ruby/gems/2.3.0/gems/actionview-5.1.3/lib/action_view/renderer/renderer.rb:47:in `render_partial'
+  actionview (5.1.3) lib/action_view/helpers/rendering_helper.rb:35:in `render'
+  app/views/pages/home.html.erb:93:in `_app_views_pages_home_html_erb__99630312017956418_70310350633180'
+  /usr/local/Cellar/rbenv/1.1.1/versions/2.3.4/lib/ruby/gems/2.3.0/gems/actionview-5.1.3/lib/action_view/template.rb:157:in `block in render'
+  activesupport (5.1.3) lib/active_support/notifications.rb:168:in `instrument'
+  /usr/local/Cellar/rbenv/1.1.1/versions/2.3.4/lib/ruby/gems/2.3.0/gems/actionview-5.1.3/lib/action_view/template.rb:352:in `instrument_render_template'
+  /usr/local/Cellar/rbenv/1.1.1/versions/2.3.4/lib/ruby/gems/2.3.0/gems/actionview-5.1.3/lib/action_view/template.rb:155:in `render'
+  /usr/local/Cellar/rbenv/1.1.1/versions/2.3.4/lib/ruby/gems/2.3.0/gems/actionview-5.1.3/lib/action_view/renderer/template_renderer.rb:52:in `block (2 levels) in render_template'
+  /usr/local/Cellar/rbenv/1.1.1/versions/2.3.4/lib/ruby/gems/2.3.0/gems/actionview-5.1.3/lib/action_view/renderer/abstract_renderer.rb:42:in `block in instrument'
+  activesupport (5.1.3) lib/active_support/notifications.rb:166:in `block in instrument'
+  activesupport (5.1.3) lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+  activesupport (5.1.3) lib/active_support/notifications.rb:166:in `instrument'
+  /usr/local/Cellar/rbenv/1.1.1/versions/2.3.4/lib/ruby/gems/2.3.0/gems/actionview-5.1.3/lib/action_view/renderer/abstract_renderer.rb:41:in `instrument'
+  /usr/local/Cellar/rbenv/1.1.1/versions/2.3.4/lib/ruby/gems/2.3.0/gems/actionview-5.1.3/lib/action_view/renderer/template_renderer.rb:51:in `block in render_template'
+  /usr/local/Cellar/rbenv/1.1.1/versions/2.3.4/lib/ruby/gems/2.3.0/gems/actionview-5.1.3/lib/action_view/renderer/template_renderer.rb:59:in `render_with_layout'
+  /usr/local/Cellar/rbenv/1.1.1/versions/2.3.4/lib/ruby/gems/2.3.0/gems/actionview-5.1.3/lib/action_view/renderer/template_renderer.rb:50:in `render_template'
+  /usr/local/Cellar/rbenv/1.1.1/versions/2.3.4/lib/ruby/gems/2.3.0/gems/actionview-5.1.3/lib/action_view/renderer/template_renderer.rb:14:in `render'
+  /usr/local/Cellar/rbenv/1.1.1/versions/2.3.4/lib/ruby/gems/2.3.0/gems/actionview-5.1.3/lib/action_view/renderer/renderer.rb:42:in `render_template'
+  /usr/local/Cellar/rbenv/1.1.1/versions/2.3.4/lib/ruby/gems/2.3.0/gems/actionview-5.1.3/lib/action_view/renderer/renderer.rb:23:in `render'
+  /usr/local/Cellar/rbenv/1.1.1/versions/2.3.4/lib/ruby/gems/2.3.0/gems/actionview-5.1.3/lib/action_view/rendering.rb:103:in `_render_template'
+  actionpack (5.1.3) lib/action_controller/metal/streaming.rb:217:in `_render_template'
+  /usr/local/Cellar/rbenv/1.1.1/versions/2.3.4/lib/ruby/gems/2.3.0/gems/actionview-5.1.3/lib/action_view/rendering.rb:83:in `render_to_body'
+  actionpack (5.1.3) lib/action_controller/metal/rendering.rb:52:in `render_to_body'
+  actionpack (5.1.3) lib/action_controller/metal/renderers.rb:141:in `render_to_body'
+  actionpack (5.1.3) lib/abstract_controller/rendering.rb:24:in `render'
+  actionpack (5.1.3) lib/action_controller/metal/rendering.rb:36:in `render'
+  actionpack (5.1.3) lib/action_controller/metal/instrumentation.rb:44:in `block (2 levels) in render'
+  activesupport (5.1.3) lib/active_support/core_ext/benchmark.rb:12:in `block in ms'
+  /usr/local/opt/rbenv/versions/2.3.4/lib/ruby/2.3.0/benchmark.rb:308:in `realtime'
+  activesupport (5.1.3) lib/active_support/core_ext/benchmark.rb:12:in `ms'
+  actionpack (5.1.3) lib/action_controller/metal/instrumentation.rb:44:in `block in render'
+  actionpack (5.1.3) lib/action_controller/metal/instrumentation.rb:87:in `cleanup_view_runtime'
+  activerecord (5.1.3) lib/active_record/railties/controller_runtime.rb:29:in `cleanup_view_runtime'
+  actionpack (5.1.3) lib/action_controller/metal/instrumentation.rb:43:in `render'
+  wicked_pdf (1.1.0) lib/wicked_pdf/pdf_helper.rb:42:in `render_with_wicked_pdf'
+  wicked_pdf (1.1.0) lib/wicked_pdf/pdf_helper.rb:27:in `render'
+  actionpack (5.1.3) lib/action_controller/metal/implicit_render.rb:33:in `default_render'
+  actionpack (5.1.3) lib/action_controller/metal/basic_implicit_render.rb:4:in `block in send_action'
+  actionpack (5.1.3) lib/action_controller/metal/basic_implicit_render.rb:4:in `send_action'
+  actionpack (5.1.3) lib/abstract_controller/base.rb:186:in `process_action'
+  actionpack (5.1.3) lib/action_controller/metal/rendering.rb:30:in `process_action'
+  actionpack (5.1.3) lib/abstract_controller/callbacks.rb:20:in `block in process_action'
+  activesupport (5.1.3) lib/active_support/callbacks.rb:131:in `run_callbacks'
+  actionpack (5.1.3) lib/abstract_controller/callbacks.rb:19:in `process_action'
+  actionpack (5.1.3) lib/action_controller/metal/rescue.rb:20:in `process_action'
+  actionpack (5.1.3) lib/action_controller/metal/instrumentation.rb:32:in `block in process_action'
+  activesupport (5.1.3) lib/active_support/notifications.rb:166:in `block in instrument'
+  activesupport (5.1.3) lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+  activesupport (5.1.3) lib/active_support/notifications.rb:166:in `instrument'
+  actionpack (5.1.3) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+  actionpack (5.1.3) lib/action_controller/metal/params_wrapper.rb:252:in `process_action'
+  activerecord (5.1.3) lib/active_record/railties/controller_runtime.rb:22:in `process_action'
+  actionpack (5.1.3) lib/abstract_controller/base.rb:124:in `process'
+  /usr/local/Cellar/rbenv/1.1.1/versions/2.3.4/lib/ruby/gems/2.3.0/gems/actionview-5.1.3/lib/action_view/rendering.rb:30:in `process'
+  actionpack (5.1.3) lib/action_controller/metal.rb:189:in `dispatch'
+  actionpack (5.1.3) lib/action_controller/metal.rb:253:in `dispatch'
+  actionpack (5.1.3) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
+  actionpack (5.1.3) lib/action_dispatch/routing/route_set.rb:31:in `serve'
+  actionpack (5.1.3) lib/action_dispatch/journey/router.rb:46:in `block in serve'
+  actionpack (5.1.3) lib/action_dispatch/journey/router.rb:33:in `serve'
+  actionpack (5.1.3) lib/action_dispatch/routing/route_set.rb:834:in `call'
+  warden (1.2.7) lib/warden/manager.rb:36:in `block in call'
+  warden (1.2.7) lib/warden/manager.rb:35:in `call'
+  rack (2.0.3) lib/rack/etag.rb:25:in `call'
+  rack (2.0.3) lib/rack/conditional_get.rb:25:in `call'
+  rack (2.0.3) lib/rack/head.rb:12:in `call'
+  rack (2.0.3) lib/rack/session/abstract/id.rb:232:in `context'
+  rack (2.0.3) lib/rack/session/abstract/id.rb:226:in `call'
+  actionpack (5.1.3) lib/action_dispatch/middleware/cookies.rb:613:in `call'
+  activerecord (5.1.3) lib/active_record/migration.rb:556:in `call'
+  actionpack (5.1.3) lib/action_dispatch/middleware/callbacks.rb:26:in `block in call'
+  activesupport (5.1.3) lib/active_support/callbacks.rb:97:in `run_callbacks'
+  actionpack (5.1.3) lib/action_dispatch/middleware/callbacks.rb:24:in `call'
+  actionpack (5.1.3) lib/action_dispatch/middleware/executor.rb:12:in `call'
+  better_errors (2.1.1) lib/better_errors/middleware.rb:84:in `protected_app_call'
+  better_errors (2.1.1) lib/better_errors/middleware.rb:79:in `better_errors_call'
+  better_errors (2.1.1) lib/better_errors/middleware.rb:57:in `call'
+  actionpack (5.1.3) lib/action_dispatch/middleware/debug_exceptions.rb:59:in `call'
+  web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+  web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+  web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+  actionpack (5.1.3) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+  railties (5.1.3) lib/rails/rack/logger.rb:36:in `call_app'
+  railties (5.1.3) lib/rails/rack/logger.rb:24:in `block in call'
+  activesupport (5.1.3) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+  activesupport (5.1.3) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (5.1.3) lib/active_support/tagged_logging.rb:69:in `tagged'
+  railties (5.1.3) lib/rails/rack/logger.rb:24:in `call'
+  sprockets-rails (3.2.0) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+  actionpack (5.1.3) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+  actionpack (5.1.3) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+  rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+  rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+  activesupport (5.1.3) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+  actionpack (5.1.3) lib/action_dispatch/middleware/executor.rb:12:in `call'
+  actionpack (5.1.3) lib/action_dispatch/middleware/static.rb:125:in `call'
+  rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+  railties (5.1.3) lib/rails/engine.rb:522:in `call'
+  puma (3.10.0) lib/puma/configuration.rb:225:in `call'
+  puma (3.10.0) lib/puma/server.rb:605:in `handle_request'
+  puma (3.10.0) lib/puma/server.rb:437:in `process_client'
+  puma (3.10.0) lib/puma/server.rb:301:in `block in run'
+  puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+
+Started POST "/__better_errors/0fc0b6fce9e61ebb/variables" for 127.0.0.1 at 2017-10-05 17:31:48 +0200
+Started GET "/" for 127.0.0.1 at 2017-10-05 17:33:19 +0200
+Processing by PagesController#home as HTML
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "events" WHERE "events"."description" = $1 AND "events"."to_do" = $2[0m  [["description", "révision de loyer"], ["to_do", "t"]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "events" WHERE "events"."description" = $1 AND "events"."to_do" = $2[0m  [["description", "retard loyer"], ["to_do", "t"]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "events" WHERE "events"."description" = $1 AND "events"."to_do" = $2[0m  [["description", "fin de bail"], ["to_do", "t"]]
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "events" WHERE "events"."to_do" = $1[0m  [["to_do", "t"]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "events" WHERE "events"."emergency_level" = $1 AND "events"."to_do" = $2[0m  [["emergency_level", "urgent"], ["to_do", "t"]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "events" WHERE "events"."emergency_level" = $1 AND "events"."to_do" = $2[0m  [["emergency_level", "urgent"], ["to_do", "t"]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "events" WHERE "events"."emergency_level" = $1[0m  [["emergency_level", "urgent"]]
+  [1m[36mEvent Load (0.5ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."status" = $1 AND "events"."emergency_level" = $2 AND "events"."to_do" = $3[0m  [["status", "tenant_to_notify"], ["emergency_level", "urgent"], ["to_do", "t"]]
+  [1m[36mBalanceDay Load (0.3ms)[0m  [1m[34mSELECT "balance_days".* FROM "balance_days"[0m
+  Rendering pages/home.html.erb within layouts/application
+  Rendered pages/_not_connected.html.erb (468.4ms)
+  Rendered pages/home.html.erb within layouts/application (471.0ms)
+Completed 500 Internal Server Error in 494ms (ActiveRecord: 4.7ms)
+
+
+
+ActionView::Template::Error - Missing partial shared/_footer with {:locale=>[:en], :formats=>[:html], :variants=>[], :handlers=>[:raw, :erb, :html, :builder, :ruby, :jbuilder]}. Searched in:
+  * "/Users/florentlienard/code/florentlienard/leasy-officiel/app/views"
+  * "/usr/local/Cellar/rbenv/1.1.1/versions/2.3.4/lib/ruby/gems/2.3.0/gems/devise-4.3.0/app/views"
+:
+  /usr/local/Cellar/rbenv/1.1.1/versions/2.3.4/lib/ruby/gems/2.3.0/gems/actionview-5.1.3/lib/action_view/template/error.rb:67:in `initialize'
+  /usr/local/Cellar/rbenv/1.1.1/versions/2.3.4/lib/ruby/gems/2.3.0/gems/actionview-5.1.3/lib/action_view/template.rb:321:in `handle_render_error'
+  /usr/local/Cellar/rbenv/1.1.1/versions/2.3.4/lib/ruby/gems/2.3.0/gems/actionview-5.1.3/lib/action_view/template.rb:160:in `rescue in render'
+  /usr/local/Cellar/rbenv/1.1.1/versions/2.3.4/lib/ruby/gems/2.3.0/gems/actionview-5.1.3/lib/action_view/template.rb:155:in `render'
+  /usr/local/Cellar/rbenv/1.1.1/versions/2.3.4/lib/ruby/gems/2.3.0/gems/actionview-5.1.3/lib/action_view/renderer/partial_renderer.rb:342:in `block in render_partial'
+  /usr/local/Cellar/rbenv/1.1.1/versions/2.3.4/lib/ruby/gems/2.3.0/gems/actionview-5.1.3/lib/action_view/renderer/abstract_renderer.rb:42:in `block in instrument'
+  activesupport (5.1.3) lib/active_support/notifications.rb:166:in `block in instrument'
+  activesupport (5.1.3) lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+  activesupport (5.1.3) lib/active_support/notifications.rb:166:in `instrument'
+  /usr/local/Cellar/rbenv/1.1.1/versions/2.3.4/lib/ruby/gems/2.3.0/gems/actionview-5.1.3/lib/action_view/renderer/abstract_renderer.rb:41:in `instrument'
+  /usr/local/Cellar/rbenv/1.1.1/versions/2.3.4/lib/ruby/gems/2.3.0/gems/actionview-5.1.3/lib/action_view/renderer/partial_renderer.rb:331:in `render_partial'
+  /usr/local/Cellar/rbenv/1.1.1/versions/2.3.4/lib/ruby/gems/2.3.0/gems/actionview-5.1.3/lib/action_view/renderer/partial_renderer.rb:310:in `render'
+  /usr/local/Cellar/rbenv/1.1.1/versions/2.3.4/lib/ruby/gems/2.3.0/gems/actionview-5.1.3/lib/action_view/renderer/renderer.rb:47:in `render_partial'
+  actionview (5.1.3) lib/action_view/helpers/rendering_helper.rb:35:in `render'
+  app/views/pages/home.html.erb:93:in `_app_views_pages_home_html_erb__99630312017956418_70310330533820'
+  /usr/local/Cellar/rbenv/1.1.1/versions/2.3.4/lib/ruby/gems/2.3.0/gems/actionview-5.1.3/lib/action_view/template.rb:157:in `block in render'
+  activesupport (5.1.3) lib/active_support/notifications.rb:168:in `instrument'
+  /usr/local/Cellar/rbenv/1.1.1/versions/2.3.4/lib/ruby/gems/2.3.0/gems/actionview-5.1.3/lib/action_view/template.rb:352:in `instrument_render_template'
+  /usr/local/Cellar/rbenv/1.1.1/versions/2.3.4/lib/ruby/gems/2.3.0/gems/actionview-5.1.3/lib/action_view/template.rb:155:in `render'
+  /usr/local/Cellar/rbenv/1.1.1/versions/2.3.4/lib/ruby/gems/2.3.0/gems/actionview-5.1.3/lib/action_view/renderer/template_renderer.rb:52:in `block (2 levels) in render_template'
+  /usr/local/Cellar/rbenv/1.1.1/versions/2.3.4/lib/ruby/gems/2.3.0/gems/actionview-5.1.3/lib/action_view/renderer/abstract_renderer.rb:42:in `block in instrument'
+  activesupport (5.1.3) lib/active_support/notifications.rb:166:in `block in instrument'
+  activesupport (5.1.3) lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+  activesupport (5.1.3) lib/active_support/notifications.rb:166:in `instrument'
+  /usr/local/Cellar/rbenv/1.1.1/versions/2.3.4/lib/ruby/gems/2.3.0/gems/actionview-5.1.3/lib/action_view/renderer/abstract_renderer.rb:41:in `instrument'
+  /usr/local/Cellar/rbenv/1.1.1/versions/2.3.4/lib/ruby/gems/2.3.0/gems/actionview-5.1.3/lib/action_view/renderer/template_renderer.rb:51:in `block in render_template'
+  /usr/local/Cellar/rbenv/1.1.1/versions/2.3.4/lib/ruby/gems/2.3.0/gems/actionview-5.1.3/lib/action_view/renderer/template_renderer.rb:59:in `render_with_layout'
+  /usr/local/Cellar/rbenv/1.1.1/versions/2.3.4/lib/ruby/gems/2.3.0/gems/actionview-5.1.3/lib/action_view/renderer/template_renderer.rb:50:in `render_template'
+  /usr/local/Cellar/rbenv/1.1.1/versions/2.3.4/lib/ruby/gems/2.3.0/gems/actionview-5.1.3/lib/action_view/renderer/template_renderer.rb:14:in `render'
+  /usr/local/Cellar/rbenv/1.1.1/versions/2.3.4/lib/ruby/gems/2.3.0/gems/actionview-5.1.3/lib/action_view/renderer/renderer.rb:42:in `render_template'
+  /usr/local/Cellar/rbenv/1.1.1/versions/2.3.4/lib/ruby/gems/2.3.0/gems/actionview-5.1.3/lib/action_view/renderer/renderer.rb:23:in `render'
+  /usr/local/Cellar/rbenv/1.1.1/versions/2.3.4/lib/ruby/gems/2.3.0/gems/actionview-5.1.3/lib/action_view/rendering.rb:103:in `_render_template'
+  actionpack (5.1.3) lib/action_controller/metal/streaming.rb:217:in `_render_template'
+  /usr/local/Cellar/rbenv/1.1.1/versions/2.3.4/lib/ruby/gems/2.3.0/gems/actionview-5.1.3/lib/action_view/rendering.rb:83:in `render_to_body'
+  actionpack (5.1.3) lib/action_controller/metal/rendering.rb:52:in `render_to_body'
+  actionpack (5.1.3) lib/action_controller/metal/renderers.rb:141:in `render_to_body'
+  actionpack (5.1.3) lib/abstract_controller/rendering.rb:24:in `render'
+  actionpack (5.1.3) lib/action_controller/metal/rendering.rb:36:in `render'
+  actionpack (5.1.3) lib/action_controller/metal/instrumentation.rb:44:in `block (2 levels) in render'
+  activesupport (5.1.3) lib/active_support/core_ext/benchmark.rb:12:in `block in ms'
+  /usr/local/opt/rbenv/versions/2.3.4/lib/ruby/2.3.0/benchmark.rb:308:in `realtime'
+  activesupport (5.1.3) lib/active_support/core_ext/benchmark.rb:12:in `ms'
+  actionpack (5.1.3) lib/action_controller/metal/instrumentation.rb:44:in `block in render'
+  actionpack (5.1.3) lib/action_controller/metal/instrumentation.rb:87:in `cleanup_view_runtime'
+  activerecord (5.1.3) lib/active_record/railties/controller_runtime.rb:29:in `cleanup_view_runtime'
+  actionpack (5.1.3) lib/action_controller/metal/instrumentation.rb:43:in `render'
+  wicked_pdf (1.1.0) lib/wicked_pdf/pdf_helper.rb:42:in `render_with_wicked_pdf'
+  wicked_pdf (1.1.0) lib/wicked_pdf/pdf_helper.rb:27:in `render'
+  actionpack (5.1.3) lib/action_controller/metal/implicit_render.rb:33:in `default_render'
+  actionpack (5.1.3) lib/action_controller/metal/basic_implicit_render.rb:4:in `block in send_action'
+  actionpack (5.1.3) lib/action_controller/metal/basic_implicit_render.rb:4:in `send_action'
+  actionpack (5.1.3) lib/abstract_controller/base.rb:186:in `process_action'
+  actionpack (5.1.3) lib/action_controller/metal/rendering.rb:30:in `process_action'
+  actionpack (5.1.3) lib/abstract_controller/callbacks.rb:20:in `block in process_action'
+  activesupport (5.1.3) lib/active_support/callbacks.rb:131:in `run_callbacks'
+  actionpack (5.1.3) lib/abstract_controller/callbacks.rb:19:in `process_action'
+  actionpack (5.1.3) lib/action_controller/metal/rescue.rb:20:in `process_action'
+  actionpack (5.1.3) lib/action_controller/metal/instrumentation.rb:32:in `block in process_action'
+  activesupport (5.1.3) lib/active_support/notifications.rb:166:in `block in instrument'
+  activesupport (5.1.3) lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+  activesupport (5.1.3) lib/active_support/notifications.rb:166:in `instrument'
+  actionpack (5.1.3) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+  actionpack (5.1.3) lib/action_controller/metal/params_wrapper.rb:252:in `process_action'
+  activerecord (5.1.3) lib/active_record/railties/controller_runtime.rb:22:in `process_action'
+  actionpack (5.1.3) lib/abstract_controller/base.rb:124:in `process'
+  /usr/local/Cellar/rbenv/1.1.1/versions/2.3.4/lib/ruby/gems/2.3.0/gems/actionview-5.1.3/lib/action_view/rendering.rb:30:in `process'
+  actionpack (5.1.3) lib/action_controller/metal.rb:189:in `dispatch'
+  actionpack (5.1.3) lib/action_controller/metal.rb:253:in `dispatch'
+  actionpack (5.1.3) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
+  actionpack (5.1.3) lib/action_dispatch/routing/route_set.rb:31:in `serve'
+  actionpack (5.1.3) lib/action_dispatch/journey/router.rb:46:in `block in serve'
+  actionpack (5.1.3) lib/action_dispatch/journey/router.rb:33:in `serve'
+  actionpack (5.1.3) lib/action_dispatch/routing/route_set.rb:834:in `call'
+  warden (1.2.7) lib/warden/manager.rb:36:in `block in call'
+  warden (1.2.7) lib/warden/manager.rb:35:in `call'
+  rack (2.0.3) lib/rack/etag.rb:25:in `call'
+  rack (2.0.3) lib/rack/conditional_get.rb:25:in `call'
+  rack (2.0.3) lib/rack/head.rb:12:in `call'
+  rack (2.0.3) lib/rack/session/abstract/id.rb:232:in `context'
+  rack (2.0.3) lib/rack/session/abstract/id.rb:226:in `call'
+  actionpack (5.1.3) lib/action_dispatch/middleware/cookies.rb:613:in `call'
+  activerecord (5.1.3) lib/active_record/migration.rb:556:in `call'
+  actionpack (5.1.3) lib/action_dispatch/middleware/callbacks.rb:26:in `block in call'
+  activesupport (5.1.3) lib/active_support/callbacks.rb:97:in `run_callbacks'
+  actionpack (5.1.3) lib/action_dispatch/middleware/callbacks.rb:24:in `call'
+  actionpack (5.1.3) lib/action_dispatch/middleware/executor.rb:12:in `call'
+  better_errors (2.1.1) lib/better_errors/middleware.rb:84:in `protected_app_call'
+  better_errors (2.1.1) lib/better_errors/middleware.rb:79:in `better_errors_call'
+  better_errors (2.1.1) lib/better_errors/middleware.rb:57:in `call'
+  actionpack (5.1.3) lib/action_dispatch/middleware/debug_exceptions.rb:59:in `call'
+  web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+  web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+  web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+  actionpack (5.1.3) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+  railties (5.1.3) lib/rails/rack/logger.rb:36:in `call_app'
+  railties (5.1.3) lib/rails/rack/logger.rb:24:in `block in call'
+  activesupport (5.1.3) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+  activesupport (5.1.3) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (5.1.3) lib/active_support/tagged_logging.rb:69:in `tagged'
+  railties (5.1.3) lib/rails/rack/logger.rb:24:in `call'
+  sprockets-rails (3.2.0) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+  actionpack (5.1.3) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+  actionpack (5.1.3) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+  rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+  rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+  activesupport (5.1.3) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+  actionpack (5.1.3) lib/action_dispatch/middleware/executor.rb:12:in `call'
+  actionpack (5.1.3) lib/action_dispatch/middleware/static.rb:125:in `call'
+  rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+  railties (5.1.3) lib/rails/engine.rb:522:in `call'
+  puma (3.10.0) lib/puma/configuration.rb:225:in `call'
+  puma (3.10.0) lib/puma/server.rb:605:in `handle_request'
+  puma (3.10.0) lib/puma/server.rb:437:in `process_client'
+  puma (3.10.0) lib/puma/server.rb:301:in `block in run'
+  puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+
+Started POST "/__better_errors/1db02a61ab1367e5/variables" for 127.0.0.1 at 2017-10-05 17:33:20 +0200
+Started GET "/" for 127.0.0.1 at 2017-10-05 17:34:47 +0200
+Processing by PagesController#home as HTML
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "events" WHERE "events"."description" = $1 AND "events"."to_do" = $2[0m  [["description", "révision de loyer"], ["to_do", "t"]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "events" WHERE "events"."description" = $1 AND "events"."to_do" = $2[0m  [["description", "retard loyer"], ["to_do", "t"]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "events" WHERE "events"."description" = $1 AND "events"."to_do" = $2[0m  [["description", "fin de bail"], ["to_do", "t"]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "events" WHERE "events"."to_do" = $1[0m  [["to_do", "t"]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "events" WHERE "events"."emergency_level" = $1 AND "events"."to_do" = $2[0m  [["emergency_level", "urgent"], ["to_do", "t"]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "events" WHERE "events"."emergency_level" = $1 AND "events"."to_do" = $2[0m  [["emergency_level", "urgent"], ["to_do", "t"]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "events" WHERE "events"."emergency_level" = $1[0m  [["emergency_level", "urgent"]]
+  [1m[36mEvent Load (0.6ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."status" = $1 AND "events"."emergency_level" = $2 AND "events"."to_do" = $3[0m  [["status", "tenant_to_notify"], ["emergency_level", "urgent"], ["to_do", "t"]]
+  [1m[36mBalanceDay Load (0.3ms)[0m  [1m[34mSELECT "balance_days".* FROM "balance_days"[0m
+  Rendering pages/home.html.erb within layouts/application
+  Rendered shared/_footer.html.erb (0.5ms)
+  Rendered pages/_not_connected.html.erb (18.2ms)
+  Rendered pages/home.html.erb within layouts/application (21.1ms)
+Completed 500 Internal Server Error in 41ms (ActiveRecord: 3.9ms)
+
+
+
+ActionView::Template::Error - Missing partial shared/_mailfordemo with {:locale=>[:en], :formats=>[:html], :variants=>[], :handlers=>[:raw, :erb, :html, :builder, :ruby, :jbuilder]}. Searched in:
+  * "/Users/florentlienard/code/florentlienard/leasy-officiel/app/views"
+  * "/usr/local/Cellar/rbenv/1.1.1/versions/2.3.4/lib/ruby/gems/2.3.0/gems/devise-4.3.0/app/views"
+:
+  /usr/local/Cellar/rbenv/1.1.1/versions/2.3.4/lib/ruby/gems/2.3.0/gems/actionview-5.1.3/lib/action_view/template/error.rb:67:in `initialize'
+  /usr/local/Cellar/rbenv/1.1.1/versions/2.3.4/lib/ruby/gems/2.3.0/gems/actionview-5.1.3/lib/action_view/template.rb:321:in `handle_render_error'
+  /usr/local/Cellar/rbenv/1.1.1/versions/2.3.4/lib/ruby/gems/2.3.0/gems/actionview-5.1.3/lib/action_view/template.rb:160:in `rescue in render'
+  /usr/local/Cellar/rbenv/1.1.1/versions/2.3.4/lib/ruby/gems/2.3.0/gems/actionview-5.1.3/lib/action_view/template.rb:155:in `render'
+  /usr/local/Cellar/rbenv/1.1.1/versions/2.3.4/lib/ruby/gems/2.3.0/gems/actionview-5.1.3/lib/action_view/renderer/partial_renderer.rb:342:in `block in render_partial'
+  /usr/local/Cellar/rbenv/1.1.1/versions/2.3.4/lib/ruby/gems/2.3.0/gems/actionview-5.1.3/lib/action_view/renderer/abstract_renderer.rb:42:in `block in instrument'
+  activesupport (5.1.3) lib/active_support/notifications.rb:166:in `block in instrument'
+  activesupport (5.1.3) lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+  activesupport (5.1.3) lib/active_support/notifications.rb:166:in `instrument'
+  /usr/local/Cellar/rbenv/1.1.1/versions/2.3.4/lib/ruby/gems/2.3.0/gems/actionview-5.1.3/lib/action_view/renderer/abstract_renderer.rb:41:in `instrument'
+  /usr/local/Cellar/rbenv/1.1.1/versions/2.3.4/lib/ruby/gems/2.3.0/gems/actionview-5.1.3/lib/action_view/renderer/partial_renderer.rb:331:in `render_partial'
+  /usr/local/Cellar/rbenv/1.1.1/versions/2.3.4/lib/ruby/gems/2.3.0/gems/actionview-5.1.3/lib/action_view/renderer/partial_renderer.rb:310:in `render'
+  /usr/local/Cellar/rbenv/1.1.1/versions/2.3.4/lib/ruby/gems/2.3.0/gems/actionview-5.1.3/lib/action_view/renderer/renderer.rb:47:in `render_partial'
+  actionview (5.1.3) lib/action_view/helpers/rendering_helper.rb:35:in `render'
+  app/views/pages/home.html.erb:93:in `_app_views_pages_home_html_erb__99630312017956418_70310364844880'
+  /usr/local/Cellar/rbenv/1.1.1/versions/2.3.4/lib/ruby/gems/2.3.0/gems/actionview-5.1.3/lib/action_view/template.rb:157:in `block in render'
+  activesupport (5.1.3) lib/active_support/notifications.rb:168:in `instrument'
+  /usr/local/Cellar/rbenv/1.1.1/versions/2.3.4/lib/ruby/gems/2.3.0/gems/actionview-5.1.3/lib/action_view/template.rb:352:in `instrument_render_template'
+  /usr/local/Cellar/rbenv/1.1.1/versions/2.3.4/lib/ruby/gems/2.3.0/gems/actionview-5.1.3/lib/action_view/template.rb:155:in `render'
+  /usr/local/Cellar/rbenv/1.1.1/versions/2.3.4/lib/ruby/gems/2.3.0/gems/actionview-5.1.3/lib/action_view/renderer/template_renderer.rb:52:in `block (2 levels) in render_template'
+  /usr/local/Cellar/rbenv/1.1.1/versions/2.3.4/lib/ruby/gems/2.3.0/gems/actionview-5.1.3/lib/action_view/renderer/abstract_renderer.rb:42:in `block in instrument'
+  activesupport (5.1.3) lib/active_support/notifications.rb:166:in `block in instrument'
+  activesupport (5.1.3) lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+  activesupport (5.1.3) lib/active_support/notifications.rb:166:in `instrument'
+  /usr/local/Cellar/rbenv/1.1.1/versions/2.3.4/lib/ruby/gems/2.3.0/gems/actionview-5.1.3/lib/action_view/renderer/abstract_renderer.rb:41:in `instrument'
+  /usr/local/Cellar/rbenv/1.1.1/versions/2.3.4/lib/ruby/gems/2.3.0/gems/actionview-5.1.3/lib/action_view/renderer/template_renderer.rb:51:in `block in render_template'
+  /usr/local/Cellar/rbenv/1.1.1/versions/2.3.4/lib/ruby/gems/2.3.0/gems/actionview-5.1.3/lib/action_view/renderer/template_renderer.rb:59:in `render_with_layout'
+  /usr/local/Cellar/rbenv/1.1.1/versions/2.3.4/lib/ruby/gems/2.3.0/gems/actionview-5.1.3/lib/action_view/renderer/template_renderer.rb:50:in `render_template'
+  /usr/local/Cellar/rbenv/1.1.1/versions/2.3.4/lib/ruby/gems/2.3.0/gems/actionview-5.1.3/lib/action_view/renderer/template_renderer.rb:14:in `render'
+  /usr/local/Cellar/rbenv/1.1.1/versions/2.3.4/lib/ruby/gems/2.3.0/gems/actionview-5.1.3/lib/action_view/renderer/renderer.rb:42:in `render_template'
+  /usr/local/Cellar/rbenv/1.1.1/versions/2.3.4/lib/ruby/gems/2.3.0/gems/actionview-5.1.3/lib/action_view/renderer/renderer.rb:23:in `render'
+  /usr/local/Cellar/rbenv/1.1.1/versions/2.3.4/lib/ruby/gems/2.3.0/gems/actionview-5.1.3/lib/action_view/rendering.rb:103:in `_render_template'
+  actionpack (5.1.3) lib/action_controller/metal/streaming.rb:217:in `_render_template'
+  /usr/local/Cellar/rbenv/1.1.1/versions/2.3.4/lib/ruby/gems/2.3.0/gems/actionview-5.1.3/lib/action_view/rendering.rb:83:in `render_to_body'
+  actionpack (5.1.3) lib/action_controller/metal/rendering.rb:52:in `render_to_body'
+  actionpack (5.1.3) lib/action_controller/metal/renderers.rb:141:in `render_to_body'
+  actionpack (5.1.3) lib/abstract_controller/rendering.rb:24:in `render'
+  actionpack (5.1.3) lib/action_controller/metal/rendering.rb:36:in `render'
+  actionpack (5.1.3) lib/action_controller/metal/instrumentation.rb:44:in `block (2 levels) in render'
+  activesupport (5.1.3) lib/active_support/core_ext/benchmark.rb:12:in `block in ms'
+  /usr/local/opt/rbenv/versions/2.3.4/lib/ruby/2.3.0/benchmark.rb:308:in `realtime'
+  activesupport (5.1.3) lib/active_support/core_ext/benchmark.rb:12:in `ms'
+  actionpack (5.1.3) lib/action_controller/metal/instrumentation.rb:44:in `block in render'
+  actionpack (5.1.3) lib/action_controller/metal/instrumentation.rb:87:in `cleanup_view_runtime'
+  activerecord (5.1.3) lib/active_record/railties/controller_runtime.rb:29:in `cleanup_view_runtime'
+  actionpack (5.1.3) lib/action_controller/metal/instrumentation.rb:43:in `render'
+  wicked_pdf (1.1.0) lib/wicked_pdf/pdf_helper.rb:42:in `render_with_wicked_pdf'
+  wicked_pdf (1.1.0) lib/wicked_pdf/pdf_helper.rb:27:in `render'
+  actionpack (5.1.3) lib/action_controller/metal/implicit_render.rb:33:in `default_render'
+  actionpack (5.1.3) lib/action_controller/metal/basic_implicit_render.rb:4:in `block in send_action'
+  actionpack (5.1.3) lib/action_controller/metal/basic_implicit_render.rb:4:in `send_action'
+  actionpack (5.1.3) lib/abstract_controller/base.rb:186:in `process_action'
+  actionpack (5.1.3) lib/action_controller/metal/rendering.rb:30:in `process_action'
+  actionpack (5.1.3) lib/abstract_controller/callbacks.rb:20:in `block in process_action'
+  activesupport (5.1.3) lib/active_support/callbacks.rb:131:in `run_callbacks'
+  actionpack (5.1.3) lib/abstract_controller/callbacks.rb:19:in `process_action'
+  actionpack (5.1.3) lib/action_controller/metal/rescue.rb:20:in `process_action'
+  actionpack (5.1.3) lib/action_controller/metal/instrumentation.rb:32:in `block in process_action'
+  activesupport (5.1.3) lib/active_support/notifications.rb:166:in `block in instrument'
+  activesupport (5.1.3) lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+  activesupport (5.1.3) lib/active_support/notifications.rb:166:in `instrument'
+  actionpack (5.1.3) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+  actionpack (5.1.3) lib/action_controller/metal/params_wrapper.rb:252:in `process_action'
+  activerecord (5.1.3) lib/active_record/railties/controller_runtime.rb:22:in `process_action'
+  actionpack (5.1.3) lib/abstract_controller/base.rb:124:in `process'
+  /usr/local/Cellar/rbenv/1.1.1/versions/2.3.4/lib/ruby/gems/2.3.0/gems/actionview-5.1.3/lib/action_view/rendering.rb:30:in `process'
+  actionpack (5.1.3) lib/action_controller/metal.rb:189:in `dispatch'
+  actionpack (5.1.3) lib/action_controller/metal.rb:253:in `dispatch'
+  actionpack (5.1.3) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
+  actionpack (5.1.3) lib/action_dispatch/routing/route_set.rb:31:in `serve'
+  actionpack (5.1.3) lib/action_dispatch/journey/router.rb:46:in `block in serve'
+  actionpack (5.1.3) lib/action_dispatch/journey/router.rb:33:in `serve'
+  actionpack (5.1.3) lib/action_dispatch/routing/route_set.rb:834:in `call'
+  warden (1.2.7) lib/warden/manager.rb:36:in `block in call'
+  warden (1.2.7) lib/warden/manager.rb:35:in `call'
+  rack (2.0.3) lib/rack/etag.rb:25:in `call'
+  rack (2.0.3) lib/rack/conditional_get.rb:25:in `call'
+  rack (2.0.3) lib/rack/head.rb:12:in `call'
+  rack (2.0.3) lib/rack/session/abstract/id.rb:232:in `context'
+  rack (2.0.3) lib/rack/session/abstract/id.rb:226:in `call'
+  actionpack (5.1.3) lib/action_dispatch/middleware/cookies.rb:613:in `call'
+  activerecord (5.1.3) lib/active_record/migration.rb:556:in `call'
+  actionpack (5.1.3) lib/action_dispatch/middleware/callbacks.rb:26:in `block in call'
+  activesupport (5.1.3) lib/active_support/callbacks.rb:97:in `run_callbacks'
+  actionpack (5.1.3) lib/action_dispatch/middleware/callbacks.rb:24:in `call'
+  actionpack (5.1.3) lib/action_dispatch/middleware/executor.rb:12:in `call'
+  better_errors (2.1.1) lib/better_errors/middleware.rb:84:in `protected_app_call'
+  better_errors (2.1.1) lib/better_errors/middleware.rb:79:in `better_errors_call'
+  better_errors (2.1.1) lib/better_errors/middleware.rb:57:in `call'
+  actionpack (5.1.3) lib/action_dispatch/middleware/debug_exceptions.rb:59:in `call'
+  web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+  web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+  web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+  actionpack (5.1.3) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+  railties (5.1.3) lib/rails/rack/logger.rb:36:in `call_app'
+  railties (5.1.3) lib/rails/rack/logger.rb:24:in `block in call'
+  activesupport (5.1.3) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+  activesupport (5.1.3) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (5.1.3) lib/active_support/tagged_logging.rb:69:in `tagged'
+  railties (5.1.3) lib/rails/rack/logger.rb:24:in `call'
+  sprockets-rails (3.2.0) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+  actionpack (5.1.3) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+  actionpack (5.1.3) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+  rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+  rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+  activesupport (5.1.3) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+  actionpack (5.1.3) lib/action_dispatch/middleware/executor.rb:12:in `call'
+  actionpack (5.1.3) lib/action_dispatch/middleware/static.rb:125:in `call'
+  rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+  railties (5.1.3) lib/rails/engine.rb:522:in `call'
+  puma (3.10.0) lib/puma/configuration.rb:225:in `call'
+  puma (3.10.0) lib/puma/server.rb:605:in `handle_request'
+  puma (3.10.0) lib/puma/server.rb:437:in `process_client'
+  puma (3.10.0) lib/puma/server.rb:301:in `block in run'
+  puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+
+Started POST "/__better_errors/065f254247aa95a5/variables" for 127.0.0.1 at 2017-10-05 17:34:48 +0200
+Started GET "/" for 127.0.0.1 at 2017-10-05 17:35:21 +0200
+Processing by PagesController#home as HTML
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "events" WHERE "events"."description" = $1 AND "events"."to_do" = $2[0m  [["description", "révision de loyer"], ["to_do", "t"]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "events" WHERE "events"."description" = $1 AND "events"."to_do" = $2[0m  [["description", "retard loyer"], ["to_do", "t"]]
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "events" WHERE "events"."description" = $1 AND "events"."to_do" = $2[0m  [["description", "fin de bail"], ["to_do", "t"]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "events" WHERE "events"."to_do" = $1[0m  [["to_do", "t"]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "events" WHERE "events"."emergency_level" = $1 AND "events"."to_do" = $2[0m  [["emergency_level", "urgent"], ["to_do", "t"]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "events" WHERE "events"."emergency_level" = $1 AND "events"."to_do" = $2[0m  [["emergency_level", "urgent"], ["to_do", "t"]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "events" WHERE "events"."emergency_level" = $1[0m  [["emergency_level", "urgent"]]
+  [1m[36mEvent Load (0.7ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."status" = $1 AND "events"."emergency_level" = $2 AND "events"."to_do" = $3[0m  [["status", "tenant_to_notify"], ["emergency_level", "urgent"], ["to_do", "t"]]
+  [1m[36mBalanceDay Load (0.4ms)[0m  [1m[34mSELECT "balance_days".* FROM "balance_days"[0m
+  Rendering pages/home.html.erb within layouts/application
+  Rendered shared/_footer.html.erb (0.5ms)
+  Rendered shared/_mailfordemo.html.erb (0.4ms)
+  Rendered pages/_not_connected.html.erb (26.7ms)
+  Rendered pages/home.html.erb within layouts/application (31.0ms)
+Completed 200 OK in 4173ms (Views: 4142.9ms | ActiveRecord: 4.9ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-10-05 17:35:55 +0200
+Processing by PagesController#home as HTML
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "events" WHERE "events"."description" = $1 AND "events"."to_do" = $2[0m  [["description", "révision de loyer"], ["to_do", "t"]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "events" WHERE "events"."description" = $1 AND "events"."to_do" = $2[0m  [["description", "retard loyer"], ["to_do", "t"]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "events" WHERE "events"."description" = $1 AND "events"."to_do" = $2[0m  [["description", "fin de bail"], ["to_do", "t"]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "events" WHERE "events"."to_do" = $1[0m  [["to_do", "t"]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "events" WHERE "events"."emergency_level" = $1 AND "events"."to_do" = $2[0m  [["emergency_level", "urgent"], ["to_do", "t"]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "events" WHERE "events"."emergency_level" = $1 AND "events"."to_do" = $2[0m  [["emergency_level", "urgent"], ["to_do", "t"]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "events" WHERE "events"."emergency_level" = $1[0m  [["emergency_level", "urgent"]]
+  [1m[36mEvent Load (0.7ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."status" = $1 AND "events"."emergency_level" = $2 AND "events"."to_do" = $3[0m  [["status", "tenant_to_notify"], ["emergency_level", "urgent"], ["to_do", "t"]]
+  [1m[36mBalanceDay Load (0.3ms)[0m  [1m[34mSELECT "balance_days".* FROM "balance_days"[0m
+  Rendering pages/home.html.erb within layouts/application
+  Rendered shared/_footer.html.erb (0.3ms)
+  Rendered shared/_mailfordemo.html.erb (0.3ms)
+  Rendered pages/_not_connected.html.erb (13.9ms)
+  Rendered pages/home.html.erb within layouts/application (16.5ms)
+Completed 200 OK in 3954ms (Views: 3938.1ms | ActiveRecord: 3.7ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2017-10-05 17:36:09 +0200
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/sessions/new.html.erb within layouts/application (10.4ms)
+Completed 500 Internal Server Error in 22ms (ActiveRecord: 0.0ms)
+
+
+
+ActionView::Template::Error - The asset "sign_in_session.jpg" is not present in the asset pipeline.:
+  /usr/local/Cellar/rbenv/1.1.1/versions/2.3.4/lib/ruby/gems/2.3.0/gems/actionview-5.1.3/lib/action_view/template/error.rb:67:in `initialize'
+  /usr/local/Cellar/rbenv/1.1.1/versions/2.3.4/lib/ruby/gems/2.3.0/gems/actionview-5.1.3/lib/action_view/template.rb:321:in `handle_render_error'
+  /usr/local/Cellar/rbenv/1.1.1/versions/2.3.4/lib/ruby/gems/2.3.0/gems/actionview-5.1.3/lib/action_view/template.rb:160:in `rescue in render'
+  /usr/local/Cellar/rbenv/1.1.1/versions/2.3.4/lib/ruby/gems/2.3.0/gems/actionview-5.1.3/lib/action_view/template.rb:155:in `render'
+  /usr/local/Cellar/rbenv/1.1.1/versions/2.3.4/lib/ruby/gems/2.3.0/gems/actionview-5.1.3/lib/action_view/renderer/template_renderer.rb:52:in `block (2 levels) in render_template'
+  /usr/local/Cellar/rbenv/1.1.1/versions/2.3.4/lib/ruby/gems/2.3.0/gems/actionview-5.1.3/lib/action_view/renderer/abstract_renderer.rb:42:in `block in instrument'
+  activesupport (5.1.3) lib/active_support/notifications.rb:166:in `block in instrument'
+  activesupport (5.1.3) lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+  activesupport (5.1.3) lib/active_support/notifications.rb:166:in `instrument'
+  /usr/local/Cellar/rbenv/1.1.1/versions/2.3.4/lib/ruby/gems/2.3.0/gems/actionview-5.1.3/lib/action_view/renderer/abstract_renderer.rb:41:in `instrument'
+  /usr/local/Cellar/rbenv/1.1.1/versions/2.3.4/lib/ruby/gems/2.3.0/gems/actionview-5.1.3/lib/action_view/renderer/template_renderer.rb:51:in `block in render_template'
+  /usr/local/Cellar/rbenv/1.1.1/versions/2.3.4/lib/ruby/gems/2.3.0/gems/actionview-5.1.3/lib/action_view/renderer/template_renderer.rb:59:in `render_with_layout'
+  /usr/local/Cellar/rbenv/1.1.1/versions/2.3.4/lib/ruby/gems/2.3.0/gems/actionview-5.1.3/lib/action_view/renderer/template_renderer.rb:50:in `render_template'
+  /usr/local/Cellar/rbenv/1.1.1/versions/2.3.4/lib/ruby/gems/2.3.0/gems/actionview-5.1.3/lib/action_view/renderer/template_renderer.rb:14:in `render'
+  /usr/local/Cellar/rbenv/1.1.1/versions/2.3.4/lib/ruby/gems/2.3.0/gems/actionview-5.1.3/lib/action_view/renderer/renderer.rb:42:in `render_template'
+  /usr/local/Cellar/rbenv/1.1.1/versions/2.3.4/lib/ruby/gems/2.3.0/gems/actionview-5.1.3/lib/action_view/renderer/renderer.rb:23:in `render'
+  /usr/local/Cellar/rbenv/1.1.1/versions/2.3.4/lib/ruby/gems/2.3.0/gems/actionview-5.1.3/lib/action_view/rendering.rb:103:in `_render_template'
+  actionpack (5.1.3) lib/action_controller/metal/streaming.rb:217:in `_render_template'
+  /usr/local/Cellar/rbenv/1.1.1/versions/2.3.4/lib/ruby/gems/2.3.0/gems/actionview-5.1.3/lib/action_view/rendering.rb:83:in `render_to_body'
+  actionpack (5.1.3) lib/action_controller/metal/rendering.rb:52:in `render_to_body'
+  actionpack (5.1.3) lib/action_controller/metal/renderers.rb:141:in `render_to_body'
+  actionpack (5.1.3) lib/abstract_controller/rendering.rb:24:in `render'
+  actionpack (5.1.3) lib/action_controller/metal/rendering.rb:36:in `render'
+  actionpack (5.1.3) lib/action_controller/metal/instrumentation.rb:44:in `block (2 levels) in render'
+  activesupport (5.1.3) lib/active_support/core_ext/benchmark.rb:12:in `block in ms'
+  /usr/local/opt/rbenv/versions/2.3.4/lib/ruby/2.3.0/benchmark.rb:308:in `realtime'
+  activesupport (5.1.3) lib/active_support/core_ext/benchmark.rb:12:in `ms'
+  actionpack (5.1.3) lib/action_controller/metal/instrumentation.rb:44:in `block in render'
+  actionpack (5.1.3) lib/action_controller/metal/instrumentation.rb:87:in `cleanup_view_runtime'
+  activerecord (5.1.3) lib/active_record/railties/controller_runtime.rb:29:in `cleanup_view_runtime'
+  actionpack (5.1.3) lib/action_controller/metal/instrumentation.rb:43:in `render'
+  wicked_pdf (1.1.0) lib/wicked_pdf/pdf_helper.rb:42:in `render_with_wicked_pdf'
+  wicked_pdf (1.1.0) lib/wicked_pdf/pdf_helper.rb:27:in `render'
+  responders (2.4.0) lib/action_controller/responder.rb:238:in `default_render'
+  responders (2.4.0) lib/action_controller/responder.rb:170:in `to_html'
+  responders (2.4.0) lib/action_controller/responder.rb:163:in `respond'
+  responders (2.4.0) lib/action_controller/responder.rb:156:in `call'
+  responders (2.4.0) lib/action_controller/respond_with.rb:211:in `respond_with'
+  /usr/local/Cellar/rbenv/1.1.1/versions/2.3.4/lib/ruby/gems/2.3.0/gems/devise-4.3.0/app/controllers/devise/sessions_controller.rb:12:in `new'
+  actionpack (5.1.3) lib/action_controller/metal/basic_implicit_render.rb:4:in `send_action'
+  actionpack (5.1.3) lib/abstract_controller/base.rb:186:in `process_action'
+  actionpack (5.1.3) lib/action_controller/metal/rendering.rb:30:in `process_action'
+  actionpack (5.1.3) lib/abstract_controller/callbacks.rb:20:in `block in process_action'
+  activesupport (5.1.3) lib/active_support/callbacks.rb:131:in `run_callbacks'
+  actionpack (5.1.3) lib/abstract_controller/callbacks.rb:19:in `process_action'
+  actionpack (5.1.3) lib/action_controller/metal/rescue.rb:20:in `process_action'
+  actionpack (5.1.3) lib/action_controller/metal/instrumentation.rb:32:in `block in process_action'
+  activesupport (5.1.3) lib/active_support/notifications.rb:166:in `block in instrument'
+  activesupport (5.1.3) lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+  activesupport (5.1.3) lib/active_support/notifications.rb:166:in `instrument'
+  actionpack (5.1.3) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+  actionpack (5.1.3) lib/action_controller/metal/params_wrapper.rb:252:in `process_action'
+  activerecord (5.1.3) lib/active_record/railties/controller_runtime.rb:22:in `process_action'
+  actionpack (5.1.3) lib/abstract_controller/base.rb:124:in `process'
+  /usr/local/Cellar/rbenv/1.1.1/versions/2.3.4/lib/ruby/gems/2.3.0/gems/actionview-5.1.3/lib/action_view/rendering.rb:30:in `process'
+  actionpack (5.1.3) lib/action_controller/metal.rb:189:in `dispatch'
+  actionpack (5.1.3) lib/action_controller/metal.rb:253:in `dispatch'
+  actionpack (5.1.3) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
+  actionpack (5.1.3) lib/action_dispatch/routing/route_set.rb:31:in `serve'
+  actionpack (5.1.3) lib/action_dispatch/routing/mapper.rb:16:in `block in <class:Constraints>'
+  actionpack (5.1.3) lib/action_dispatch/routing/mapper.rb:46:in `serve'
+  actionpack (5.1.3) lib/action_dispatch/journey/router.rb:46:in `block in serve'
+  actionpack (5.1.3) lib/action_dispatch/journey/router.rb:33:in `serve'
+  actionpack (5.1.3) lib/action_dispatch/routing/route_set.rb:834:in `call'
+  warden (1.2.7) lib/warden/manager.rb:36:in `block in call'
+  warden (1.2.7) lib/warden/manager.rb:35:in `call'
+  rack (2.0.3) lib/rack/etag.rb:25:in `call'
+  rack (2.0.3) lib/rack/conditional_get.rb:25:in `call'
+  rack (2.0.3) lib/rack/head.rb:12:in `call'
+  rack (2.0.3) lib/rack/session/abstract/id.rb:232:in `context'
+  rack (2.0.3) lib/rack/session/abstract/id.rb:226:in `call'
+  actionpack (5.1.3) lib/action_dispatch/middleware/cookies.rb:613:in `call'
+  activerecord (5.1.3) lib/active_record/migration.rb:556:in `call'
+  actionpack (5.1.3) lib/action_dispatch/middleware/callbacks.rb:26:in `block in call'
+  activesupport (5.1.3) lib/active_support/callbacks.rb:97:in `run_callbacks'
+  actionpack (5.1.3) lib/action_dispatch/middleware/callbacks.rb:24:in `call'
+  actionpack (5.1.3) lib/action_dispatch/middleware/executor.rb:12:in `call'
+  better_errors (2.1.1) lib/better_errors/middleware.rb:84:in `protected_app_call'
+  better_errors (2.1.1) lib/better_errors/middleware.rb:79:in `better_errors_call'
+  better_errors (2.1.1) lib/better_errors/middleware.rb:57:in `call'
+  actionpack (5.1.3) lib/action_dispatch/middleware/debug_exceptions.rb:59:in `call'
+  web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+  web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+  web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+  actionpack (5.1.3) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+  railties (5.1.3) lib/rails/rack/logger.rb:36:in `call_app'
+  railties (5.1.3) lib/rails/rack/logger.rb:24:in `block in call'
+  activesupport (5.1.3) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+  activesupport (5.1.3) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (5.1.3) lib/active_support/tagged_logging.rb:69:in `tagged'
+  railties (5.1.3) lib/rails/rack/logger.rb:24:in `call'
+  sprockets-rails (3.2.0) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+  actionpack (5.1.3) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+  actionpack (5.1.3) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+  rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+  rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+  activesupport (5.1.3) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+  actionpack (5.1.3) lib/action_dispatch/middleware/executor.rb:12:in `call'
+  actionpack (5.1.3) lib/action_dispatch/middleware/static.rb:125:in `call'
+  rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+  railties (5.1.3) lib/rails/engine.rb:522:in `call'
+  puma (3.10.0) lib/puma/configuration.rb:225:in `call'
+  puma (3.10.0) lib/puma/server.rb:605:in `handle_request'
+  puma (3.10.0) lib/puma/server.rb:437:in `process_client'
+  puma (3.10.0) lib/puma/server.rb:301:in `block in run'
+  puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+
+Started POST "/__better_errors/a956f1f7e83c2bfe/variables" for 127.0.0.1 at 2017-10-05 17:36:09 +0200
+Started GET "/users/sign_in" for 127.0.0.1 at 2017-10-05 17:36:45 +0200
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/sessions/new.html.erb within layouts/application (5.9ms)
+Completed 500 Internal Server Error in 16ms (ActiveRecord: 0.0ms)
+
+
+
+ActionView::Template::Error - The asset "sign_in_session.jpg" is not present in the asset pipeline.:
+  /usr/local/Cellar/rbenv/1.1.1/versions/2.3.4/lib/ruby/gems/2.3.0/gems/actionview-5.1.3/lib/action_view/template/error.rb:67:in `initialize'
+  /usr/local/Cellar/rbenv/1.1.1/versions/2.3.4/lib/ruby/gems/2.3.0/gems/actionview-5.1.3/lib/action_view/template.rb:321:in `handle_render_error'
+  /usr/local/Cellar/rbenv/1.1.1/versions/2.3.4/lib/ruby/gems/2.3.0/gems/actionview-5.1.3/lib/action_view/template.rb:160:in `rescue in render'
+  /usr/local/Cellar/rbenv/1.1.1/versions/2.3.4/lib/ruby/gems/2.3.0/gems/actionview-5.1.3/lib/action_view/template.rb:155:in `render'
+  /usr/local/Cellar/rbenv/1.1.1/versions/2.3.4/lib/ruby/gems/2.3.0/gems/actionview-5.1.3/lib/action_view/renderer/template_renderer.rb:52:in `block (2 levels) in render_template'
+  /usr/local/Cellar/rbenv/1.1.1/versions/2.3.4/lib/ruby/gems/2.3.0/gems/actionview-5.1.3/lib/action_view/renderer/abstract_renderer.rb:42:in `block in instrument'
+  activesupport (5.1.3) lib/active_support/notifications.rb:166:in `block in instrument'
+  activesupport (5.1.3) lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+  activesupport (5.1.3) lib/active_support/notifications.rb:166:in `instrument'
+  /usr/local/Cellar/rbenv/1.1.1/versions/2.3.4/lib/ruby/gems/2.3.0/gems/actionview-5.1.3/lib/action_view/renderer/abstract_renderer.rb:41:in `instrument'
+  /usr/local/Cellar/rbenv/1.1.1/versions/2.3.4/lib/ruby/gems/2.3.0/gems/actionview-5.1.3/lib/action_view/renderer/template_renderer.rb:51:in `block in render_template'
+  /usr/local/Cellar/rbenv/1.1.1/versions/2.3.4/lib/ruby/gems/2.3.0/gems/actionview-5.1.3/lib/action_view/renderer/template_renderer.rb:59:in `render_with_layout'
+  /usr/local/Cellar/rbenv/1.1.1/versions/2.3.4/lib/ruby/gems/2.3.0/gems/actionview-5.1.3/lib/action_view/renderer/template_renderer.rb:50:in `render_template'
+  /usr/local/Cellar/rbenv/1.1.1/versions/2.3.4/lib/ruby/gems/2.3.0/gems/actionview-5.1.3/lib/action_view/renderer/template_renderer.rb:14:in `render'
+  /usr/local/Cellar/rbenv/1.1.1/versions/2.3.4/lib/ruby/gems/2.3.0/gems/actionview-5.1.3/lib/action_view/renderer/renderer.rb:42:in `render_template'
+  /usr/local/Cellar/rbenv/1.1.1/versions/2.3.4/lib/ruby/gems/2.3.0/gems/actionview-5.1.3/lib/action_view/renderer/renderer.rb:23:in `render'
+  /usr/local/Cellar/rbenv/1.1.1/versions/2.3.4/lib/ruby/gems/2.3.0/gems/actionview-5.1.3/lib/action_view/rendering.rb:103:in `_render_template'
+  actionpack (5.1.3) lib/action_controller/metal/streaming.rb:217:in `_render_template'
+  /usr/local/Cellar/rbenv/1.1.1/versions/2.3.4/lib/ruby/gems/2.3.0/gems/actionview-5.1.3/lib/action_view/rendering.rb:83:in `render_to_body'
+  actionpack (5.1.3) lib/action_controller/metal/rendering.rb:52:in `render_to_body'
+  actionpack (5.1.3) lib/action_controller/metal/renderers.rb:141:in `render_to_body'
+  actionpack (5.1.3) lib/abstract_controller/rendering.rb:24:in `render'
+  actionpack (5.1.3) lib/action_controller/metal/rendering.rb:36:in `render'
+  actionpack (5.1.3) lib/action_controller/metal/instrumentation.rb:44:in `block (2 levels) in render'
+  activesupport (5.1.3) lib/active_support/core_ext/benchmark.rb:12:in `block in ms'
+  /usr/local/opt/rbenv/versions/2.3.4/lib/ruby/2.3.0/benchmark.rb:308:in `realtime'
+  activesupport (5.1.3) lib/active_support/core_ext/benchmark.rb:12:in `ms'
+  actionpack (5.1.3) lib/action_controller/metal/instrumentation.rb:44:in `block in render'
+  actionpack (5.1.3) lib/action_controller/metal/instrumentation.rb:87:in `cleanup_view_runtime'
+  activerecord (5.1.3) lib/active_record/railties/controller_runtime.rb:29:in `cleanup_view_runtime'
+  actionpack (5.1.3) lib/action_controller/metal/instrumentation.rb:43:in `render'
+  wicked_pdf (1.1.0) lib/wicked_pdf/pdf_helper.rb:42:in `render_with_wicked_pdf'
+  wicked_pdf (1.1.0) lib/wicked_pdf/pdf_helper.rb:27:in `render'
+  responders (2.4.0) lib/action_controller/responder.rb:238:in `default_render'
+  responders (2.4.0) lib/action_controller/responder.rb:170:in `to_html'
+  responders (2.4.0) lib/action_controller/responder.rb:163:in `respond'
+  responders (2.4.0) lib/action_controller/responder.rb:156:in `call'
+  responders (2.4.0) lib/action_controller/respond_with.rb:211:in `respond_with'
+  /usr/local/Cellar/rbenv/1.1.1/versions/2.3.4/lib/ruby/gems/2.3.0/gems/devise-4.3.0/app/controllers/devise/sessions_controller.rb:12:in `new'
+  actionpack (5.1.3) lib/action_controller/metal/basic_implicit_render.rb:4:in `send_action'
+  actionpack (5.1.3) lib/abstract_controller/base.rb:186:in `process_action'
+  actionpack (5.1.3) lib/action_controller/metal/rendering.rb:30:in `process_action'
+  actionpack (5.1.3) lib/abstract_controller/callbacks.rb:20:in `block in process_action'
+  activesupport (5.1.3) lib/active_support/callbacks.rb:131:in `run_callbacks'
+  actionpack (5.1.3) lib/abstract_controller/callbacks.rb:19:in `process_action'
+  actionpack (5.1.3) lib/action_controller/metal/rescue.rb:20:in `process_action'
+  actionpack (5.1.3) lib/action_controller/metal/instrumentation.rb:32:in `block in process_action'
+  activesupport (5.1.3) lib/active_support/notifications.rb:166:in `block in instrument'
+  activesupport (5.1.3) lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+  activesupport (5.1.3) lib/active_support/notifications.rb:166:in `instrument'
+  actionpack (5.1.3) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+  actionpack (5.1.3) lib/action_controller/metal/params_wrapper.rb:252:in `process_action'
+  activerecord (5.1.3) lib/active_record/railties/controller_runtime.rb:22:in `process_action'
+  actionpack (5.1.3) lib/abstract_controller/base.rb:124:in `process'
+  /usr/local/Cellar/rbenv/1.1.1/versions/2.3.4/lib/ruby/gems/2.3.0/gems/actionview-5.1.3/lib/action_view/rendering.rb:30:in `process'
+  actionpack (5.1.3) lib/action_controller/metal.rb:189:in `dispatch'
+  actionpack (5.1.3) lib/action_controller/metal.rb:253:in `dispatch'
+  actionpack (5.1.3) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
+  actionpack (5.1.3) lib/action_dispatch/routing/route_set.rb:31:in `serve'
+  actionpack (5.1.3) lib/action_dispatch/routing/mapper.rb:16:in `block in <class:Constraints>'
+  actionpack (5.1.3) lib/action_dispatch/routing/mapper.rb:46:in `serve'
+  actionpack (5.1.3) lib/action_dispatch/journey/router.rb:46:in `block in serve'
+  actionpack (5.1.3) lib/action_dispatch/journey/router.rb:33:in `serve'
+  actionpack (5.1.3) lib/action_dispatch/routing/route_set.rb:834:in `call'
+  warden (1.2.7) lib/warden/manager.rb:36:in `block in call'
+  warden (1.2.7) lib/warden/manager.rb:35:in `call'
+  rack (2.0.3) lib/rack/etag.rb:25:in `call'
+  rack (2.0.3) lib/rack/conditional_get.rb:25:in `call'
+  rack (2.0.3) lib/rack/head.rb:12:in `call'
+  rack (2.0.3) lib/rack/session/abstract/id.rb:232:in `context'
+  rack (2.0.3) lib/rack/session/abstract/id.rb:226:in `call'
+  actionpack (5.1.3) lib/action_dispatch/middleware/cookies.rb:613:in `call'
+  activerecord (5.1.3) lib/active_record/migration.rb:556:in `call'
+  actionpack (5.1.3) lib/action_dispatch/middleware/callbacks.rb:26:in `block in call'
+  activesupport (5.1.3) lib/active_support/callbacks.rb:97:in `run_callbacks'
+  actionpack (5.1.3) lib/action_dispatch/middleware/callbacks.rb:24:in `call'
+  actionpack (5.1.3) lib/action_dispatch/middleware/executor.rb:12:in `call'
+  better_errors (2.1.1) lib/better_errors/middleware.rb:84:in `protected_app_call'
+  better_errors (2.1.1) lib/better_errors/middleware.rb:79:in `better_errors_call'
+  better_errors (2.1.1) lib/better_errors/middleware.rb:57:in `call'
+  actionpack (5.1.3) lib/action_dispatch/middleware/debug_exceptions.rb:59:in `call'
+  web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+  web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+  web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+  actionpack (5.1.3) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+  railties (5.1.3) lib/rails/rack/logger.rb:36:in `call_app'
+  railties (5.1.3) lib/rails/rack/logger.rb:24:in `block in call'
+  activesupport (5.1.3) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+  activesupport (5.1.3) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (5.1.3) lib/active_support/tagged_logging.rb:69:in `tagged'
+  railties (5.1.3) lib/rails/rack/logger.rb:24:in `call'
+  sprockets-rails (3.2.0) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+  actionpack (5.1.3) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+  actionpack (5.1.3) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+  rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+  rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+  activesupport (5.1.3) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+  actionpack (5.1.3) lib/action_dispatch/middleware/executor.rb:12:in `call'
+  actionpack (5.1.3) lib/action_dispatch/middleware/static.rb:125:in `call'
+  rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+  railties (5.1.3) lib/rails/engine.rb:522:in `call'
+  puma (3.10.0) lib/puma/configuration.rb:225:in `call'
+  puma (3.10.0) lib/puma/server.rb:605:in `handle_request'
+  puma (3.10.0) lib/puma/server.rb:437:in `process_client'
+  puma (3.10.0) lib/puma/server.rb:301:in `block in run'
+  puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+
+Started POST "/__better_errors/568db36486e86369/variables" for 127.0.0.1 at 2017-10-05 17:36:45 +0200
+Started GET "/users/sign_in" for 127.0.0.1 at 2017-10-05 17:37:11 +0200
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.7ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (24.0ms)
+Completed 200 OK in 52ms (Views: 51.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2017-10-05 17:37:25 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/users"):
+  
+actionpack (5.1.3) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.3) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.3) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.3) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.0) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.3) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.3) lib/rails/engine.rb:522:in `call'
+puma (3.10.0) lib/puma/configuration.rb:225:in `call'
+puma (3.10.0) lib/puma/server.rb:605:in `handle_request'
+puma (3.10.0) lib/puma/server.rb:437:in `process_client'
+puma (3.10.0) lib/puma/server.rb:301:in `block in run'
+puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/" for 127.0.0.1 at 2017-10-05 17:37:28 +0200
+Processing by PagesController#home as HTML
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "events" WHERE "events"."description" = $1 AND "events"."to_do" = $2[0m  [["description", "révision de loyer"], ["to_do", "t"]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "events" WHERE "events"."description" = $1 AND "events"."to_do" = $2[0m  [["description", "retard loyer"], ["to_do", "t"]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "events" WHERE "events"."description" = $1 AND "events"."to_do" = $2[0m  [["description", "fin de bail"], ["to_do", "t"]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "events" WHERE "events"."to_do" = $1[0m  [["to_do", "t"]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "events" WHERE "events"."emergency_level" = $1 AND "events"."to_do" = $2[0m  [["emergency_level", "urgent"], ["to_do", "t"]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "events" WHERE "events"."emergency_level" = $1 AND "events"."to_do" = $2[0m  [["emergency_level", "urgent"], ["to_do", "t"]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "events" WHERE "events"."emergency_level" = $1[0m  [["emergency_level", "urgent"]]
+  [1m[36mEvent Load (0.4ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."status" = $1 AND "events"."emergency_level" = $2 AND "events"."to_do" = $3[0m  [["status", "tenant_to_notify"], ["emergency_level", "urgent"], ["to_do", "t"]]
+  [1m[36mBalanceDay Load (0.3ms)[0m  [1m[34mSELECT "balance_days".* FROM "balance_days"[0m
+  Rendering pages/home.html.erb within layouts/application
+  Rendered shared/_footer.html.erb (0.4ms)
+  Rendered shared/_mailfordemo.html.erb (0.3ms)
+  Rendered pages/_not_connected.html.erb (12.8ms)
+  Rendered pages/home.html.erb within layouts/application (15.8ms)
+Completed 200 OK in 48ms (Views: 36.1ms | ActiveRecord: 2.7ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2017-10-05 17:37:30 +0200
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (0.8ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (11.1ms)
+Completed 200 OK in 40ms (Views: 38.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2017-10-05 17:38:07 +0200
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.0ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (14.3ms)
+Completed 200 OK in 41ms (Views: 39.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2017-10-05 17:41:48 +0200
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/sessions/new.html.erb within layouts/application (28.7ms)
+Completed 200 OK in 118ms (Views: 108.7ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2017-10-05 17:42:05 +0200
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"EYIgpJew9l2jxoO7nYwSTr/YVDY8xA25Ymf8EDI7wNh+fml6B7DlCxiyUXdaeT+DANS/LxACWOALjSFEhKGQRA==", "user"=>{"email"=>"vincent.feildel@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "vincent.feildel@gmail.com"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[33mUPDATE "users" SET "current_sign_in_at" = $1, "last_sign_in_at" = $2, "sign_in_count" = $3, "updated_at" = $4 WHERE "users"."id" = $5[0m  [["current_sign_in_at", "2017-10-05 15:42:06.097570"], ["last_sign_in_at", "2017-10-05 15:29:47.650677"], ["sign_in_count", 3], ["updated_at", "2017-10-05 15:42:06.099113"], ["id", 1]]
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 156ms (ActiveRecord: 3.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-10-05 17:42:06 +0200
+Processing by PagesController#home as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "events" WHERE "events"."description" = $1 AND "events"."to_do" = $2[0m  [["description", "révision de loyer"], ["to_do", "t"]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "events" WHERE "events"."description" = $1 AND "events"."to_do" = $2[0m  [["description", "retard loyer"], ["to_do", "t"]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "events" WHERE "events"."description" = $1 AND "events"."to_do" = $2[0m  [["description", "fin de bail"], ["to_do", "t"]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "events" WHERE "events"."to_do" = $1[0m  [["to_do", "t"]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "events" WHERE "events"."emergency_level" = $1 AND "events"."to_do" = $2[0m  [["emergency_level", "urgent"], ["to_do", "t"]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "events" WHERE "events"."emergency_level" = $1 AND "events"."to_do" = $2[0m  [["emergency_level", "urgent"], ["to_do", "t"]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "events" WHERE "events"."emergency_level" = $1[0m  [["emergency_level", "urgent"]]
+  [1m[36mEvent Load (0.4ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."status" = $1 AND "events"."emergency_level" = $2 AND "events"."to_do" = $3[0m  [["status", "tenant_to_notify"], ["emergency_level", "urgent"], ["to_do", "t"]]
+  [1m[36mBalanceDay Load (0.3ms)[0m  [1m[34mSELECT "balance_days".* FROM "balance_days"[0m
+  Rendering pages/home.html.erb within layouts/application
+  Rendered pages/_progressbar.html.erb (0.4ms)
+  Rendered pages/home.html.erb within layouts/application (9.3ms)
+  Rendered shared/_nav_bar.html.erb (2.4ms)
+Completed 200 OK in 51ms (Views: 36.7ms | ActiveRecord: 3.3ms)
+
+
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2017-10-05 17:42:11 +0200
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"rwROL7vINM19xZc7jL7yl/xcf1l2U71dHfNpxNBs79qOurRz5SP5c5O15gs22fBXMZYcc+Gy+v3vzKWPzHXnSQ=="}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 9ms (ActiveRecord: 1.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-10-05 17:42:11 +0200
+Processing by PagesController#home as HTML
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "events" WHERE "events"."description" = $1 AND "events"."to_do" = $2[0m  [["description", "révision de loyer"], ["to_do", "t"]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "events" WHERE "events"."description" = $1 AND "events"."to_do" = $2[0m  [["description", "retard loyer"], ["to_do", "t"]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "events" WHERE "events"."description" = $1 AND "events"."to_do" = $2[0m  [["description", "fin de bail"], ["to_do", "t"]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "events" WHERE "events"."to_do" = $1[0m  [["to_do", "t"]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "events" WHERE "events"."emergency_level" = $1 AND "events"."to_do" = $2[0m  [["emergency_level", "urgent"], ["to_do", "t"]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "events" WHERE "events"."emergency_level" = $1 AND "events"."to_do" = $2[0m  [["emergency_level", "urgent"], ["to_do", "t"]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "events" WHERE "events"."emergency_level" = $1[0m  [["emergency_level", "urgent"]]
+  [1m[36mEvent Load (0.4ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."status" = $1 AND "events"."emergency_level" = $2 AND "events"."to_do" = $3[0m  [["status", "tenant_to_notify"], ["emergency_level", "urgent"], ["to_do", "t"]]
+  [1m[36mBalanceDay Load (0.8ms)[0m  [1m[34mSELECT "balance_days".* FROM "balance_days"[0m
+  Rendering pages/home.html.erb within layouts/application
+  Rendered shared/_footer.html.erb (0.3ms)
+  Rendered shared/_mailfordemo.html.erb (0.3ms)
+  Rendered pages/_not_connected.html.erb (17.5ms)
+  Rendered pages/home.html.erb within layouts/application (20.5ms)
+Completed 200 OK in 63ms (Views: 48.2ms | ActiveRecord: 3.2ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2017-10-05 17:42:13 +0200
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/sessions/new.html.erb within layouts/application (14.4ms)
+Completed 200 OK in 47ms (Views: 46.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2017-10-05 17:43:00 +0200
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/sessions/new.html.erb within layouts/application (12.9ms)
+Completed 200 OK in 4021ms (Views: 4020.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-10-05 17:43:20 +0200
+Processing by PagesController#home as HTML
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "events" WHERE "events"."description" = $1 AND "events"."to_do" = $2[0m  [["description", "révision de loyer"], ["to_do", "t"]]
+  [1m[35m (1.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "events" WHERE "events"."description" = $1 AND "events"."to_do" = $2[0m  [["description", "retard loyer"], ["to_do", "t"]]
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "events" WHERE "events"."description" = $1 AND "events"."to_do" = $2[0m  [["description", "fin de bail"], ["to_do", "t"]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "events" WHERE "events"."to_do" = $1[0m  [["to_do", "t"]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "events" WHERE "events"."emergency_level" = $1 AND "events"."to_do" = $2[0m  [["emergency_level", "urgent"], ["to_do", "t"]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "events" WHERE "events"."emergency_level" = $1 AND "events"."to_do" = $2[0m  [["emergency_level", "urgent"], ["to_do", "t"]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "events" WHERE "events"."emergency_level" = $1[0m  [["emergency_level", "urgent"]]
+  [1m[36mEvent Load (0.4ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."status" = $1 AND "events"."emergency_level" = $2 AND "events"."to_do" = $3[0m  [["status", "tenant_to_notify"], ["emergency_level", "urgent"], ["to_do", "t"]]
+  [1m[36mBalanceDay Load (0.3ms)[0m  [1m[34mSELECT "balance_days".* FROM "balance_days"[0m
+  Rendering pages/home.html.erb within layouts/application
+  Rendered shared/_footer.html.erb (0.4ms)
+  Rendered shared/_mailfordemo.html.erb (0.5ms)
+  Rendered pages/_not_connected.html.erb (15.7ms)
+  Rendered pages/home.html.erb within layouts/application (18.7ms)
+Completed 200 OK in 61ms (Views: 43.1ms | ActiveRecord: 4.6ms)
+
+

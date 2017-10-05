@@ -1,0 +1,97 @@
+<% @event.status == 'tenant_to_notify' ? (dest = 'locataire') : (dest = 'bailleur') %>
+
+<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">
+          Choisir mode d'envoi
+        </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" id='closecross'>
+        <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <div class="mail-form hide">
+          <%= form_tag event_mail_path(@event) do %>
+            <div class="form-group">
+              <label for="exampleInputEmail1" class="labelmail">
+              <p></p>
+                <strong>Mail à envoyer à : </strong><%= @event.lease.owner_email %>
+              <p></p>
+                <strong>Sujet : </strong> <%= "Lot #{@event.lease.num_lot} - #{@event.lease.tenant_address.capitalize} - #{@event.description.capitalize}" %>
+              <p></p>
+              </label>
+              <textarea class="form-control" id="exampleTextarea" rows="3" name= "response" > <%= render '/shared/email_owner_contact' %> </textarea>
+              <small id="emailHelp" class="form-text text-muted">Modifiez le mail ci-dessus si besoin puis envoyez.</small>
+            </div>
+            <%= submit_tag "Envoyer au #{dest}", class: 'btn btn-primary', id: "mail-envoye" %>
+            <% end %>
+        </div>
+
+        <div class="sending-choices">
+          <%= link_to "#", class: 'choice-link' do %>
+          <div class="sending-choice text-center" id="maillink">
+            <h1 class="mail">Contacter par mail</h1>
+            <i class="mail fa fa-envelope" aria-hidden="true"></i>
+          </div>
+          <% end %>
+          <hr>
+          <%= link_to "#{@event.id}/letter.pdf", class: 'choice-link', target: 'blank' do %>
+          <div class="sending-choice pdf text-center" id='letterlink'>
+            <h1 class="pdf">Générer une lettre</h1>
+            <i class="pdf fa fa-file-pdf-o" aria-hidden="true"></i>
+          </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const tohide = document.getElementsByClassName("sending-choices")[0]
+  const toshow = document.getElementsByClassName("mail-form")[0]
+  const buttonMail = document.getElementById('maillink');
+  const buttonLetter = document.getElementById('letterlink');
+  const buttonSendMail = document.getElementById('mail-envoye');
+
+  buttonMail.addEventListener("click", function () {
+    tohide.classList.add("hide");
+    toshow.classList.remove("hide");
+  });
+
+  buttonLetter.addEventListener("click", function () {
+    $("#closecross").click();
+    $('#ModalSuccess').modal('show');
+    $('#TitleSuccess').text("Votre lettre a bien été générée!");
+  });
+
+    buttonSendMail.addEventListener("click", function () {
+    $("#closecross").click();
+    $('#ModalSuccess').modal('show');
+    $('#TitleSuccess').text("Votre mail a bien été envoyé!");
+  });
+
+</script>
+
+<%#script previously made to transform placeholder in real input
+  const text = document.getElementById('exampleTextarea');
+  text.addEventListener("click", function () {
+    event.target.innerHTML = "Cher monsieur, nous vous contactons pour informer que votre bail                                                (...)";
+  });
+%>
+
+
+
+
+
+
+
+
+
+
+
+

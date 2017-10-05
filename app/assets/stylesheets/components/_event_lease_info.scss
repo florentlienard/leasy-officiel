@@ -1,0 +1,78 @@
+.lease-informations {
+  background: white;
+  margin: 30px;
+  padding: 40px;
+  border-radius: 3px;
+  border-color: rgb(240, 240, 240);
+  border-style: solid;
+  border-width: 1px;
+}
+.stakeholders {
+  margin: 0;
+  padding: 0;
+}
+.stakeholder {
+  background: white;
+  margin: 30px;
+  padding: 20px;
+  border-radius: 3px;
+  border-color: rgb(240, 240, 240);
+  border-style: solid;
+  border-width: 1px;
+}
+#type_event_bail {
+  color: rgb(91, 91, 91);
+  // border-bottom-style: solid;
+  padding-bottom: 5px;
+  // border-width: 2px;
+  // border-color: #EE4657;
+  font-size: 18px;
+}
+#type_event_loyer {
+  color: rgb(91, 91, 91);
+  // border-bottom-style: solid;
+  padding-bottom: 5px;
+  // border-width: 2px;
+  // border-color: #00BF9C;
+  font-size: 18px;
+}
+#type_event_paiement {
+  color: rgb(91, 91, 91);
+  // border-bottom-style: solid;
+  padding-bottom: 5px;
+  border-width: 2px;
+  // border-color: #FDBD01;
+  font-size: 18px;
+
+}
+.event-element {
+  margin: 20px 0px;
+  border-bottom-style: solid;
+  padding-bottom: 10px;
+  border-width: 1px;
+  border-color: rgb(240,240,240)
+}
+#event-title {
+  color: rgb(31, 31, 31);
+}
+#left-event-title {
+  color: rgb(31, 31, 31);
+  margin: 20px 0px;
+  border-bottom-style: solid;
+  padding-bottom: 10px;
+  border-width: 1px;
+  border-color: rgb(240,240,240)
+}
+.nature-event {
+  margin-left: 40px;
+  margin-top: 15px;
+  color: grey;
+}
+.post-message {
+  margin: 30px;
+}
+#accordion-decoration a{
+  text-decoration: none;
+  color: #5B5B5B;
+}
+

@@ -1,0 +1,94 @@
+<!-- Modal calculation -->
+<% start_date = @event.lease.end_date - 9.years %>
+<% new_rent = 0 %>
+<% i = 1 %>
+<% while new_rent == 0 do %>
+  <% if Indice.find(i).app_date < start_date %>
+      <% new_rent = ((Indice.find(1).indice / Indice.find(i-1).indice) * @event.lease.monthly_rent).round %>
+  <% end %>
+  <% i += 1 %>
+  <% new_rent = ((Indice.find(1).indice / Indice.find(i-1).indice) * @event.lease.monthly_rent).round if i == 41  %>
+<% end %>
+
+<!-- HTML -->
+<div class="modal fade" id="Modalchoice" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="choice_owner modal-content">
+
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">
+          <%= "Fin de bail: notification du locataire" %>
+        </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" id='closecrosschoice'>
+        <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <!-- etape decision bailleur -->
+
+        <!-- etape choix loyer -->
+        <div>
+          <div class="content-choice row">
+            <div class="instructions">
+              <div class="column_info-1">
+                <p><strong><i class="icon-modale fa fa-user" aria-hidden="true"></i>
+ Bailleur</strong> : <%= @event.lease.owner_name%></p>
+                <p><strong><i class="icon-modale fa fa-user-o" aria-hidden="true"></i> Locataire</strong> : <%= @event.lease.tenant_first_name %> <%=@event.lease.tenant_name%></p>
+                <p><strong><i class="icon-modale fa fa-calendar-times-o" aria-hidden="true"></i>
+ Date d'échéance</strong> : <%= @event.end_date.strftime("%d/%m/%Y") %></p>
+              </div>
+              <div class="column_info-2">
+                <p><strong><i class="icon-modale fa fa-location-arrow" aria-hidden="true"></i>
+ Adresse</strong> : <%= @event.lease.tenant_address%></p>
+                <p><i class="icon-modale fa fa-key" aria-hidden="true"></i>
+<strong>N° de lot</strong> : <%= @event.lease.num_lot %></p>
+                <p><strong><i class="icon-modale fa fa-file-text-o" aria-hidden="true"></i> Nature du bail</strong> : <%= @event.lease.nature %></p>
+              </div>
+            </div>
+
+            <!-- Form for owner choice -->
+              <div class="ownerchoice rightform col-xs-12">
+                <p class = "text-center"><strong>Quel est le choix de <%= @event.lease.owner_name%> ?</strong></p>
+                <div class="options">
+                  <div class="option option-column-1"></i><p>Renouvellement</p></div>
+                  <div class="option option-column-2"><p>Refus</p></div>
+                </div>
+              </div>
+            </div>
+              <!-- OTHER MODAL -->
+              <div class="rightform col-xs-12 hide" id="newrent-choice">
+                <div class="step"><i class="fa fa-arrow-left"></i> Retour décision bailleur</div>
+                <%= simple_form_for @event, remote: true do |e| %>
+                <p><i class="fa fa-money"></i> Ancien loyer mensuel du bail: <%= number_with_delimiter(@event.lease.monthly_rent, :delimeter => " ").to_s.gsub(',',' ') %>€</p>
+                <p><i class="fa fa-money"></i> Nouveau loyer proposé au bailleur: <strong><%= number_with_delimiter(new_rent, :delimeter => " ").to_s.gsub(',',' ') %>€</strong>*</p>
+                  <label for="event[new_rent]">Nouveau loyer demandé par le bailleur:</label>
+                  <input class="form-control numeric integer optional" type="number" step="1" name="event[new_rent]" id="event_new_rent" placeholder="<%= number_with_delimiter(new_rent, :delimeter => '').to_s.gsub(',',' ') %>">
+                  <br>
+                <%= e.submit "Valider nouveau loyer", class: "btn btn-primary"  %>
+                  <p class="asterisque">*Nouveau loyer calculé selon l'indice des loyers commerciaux</p>
+                <% end %>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const tohideC = document.getElementsByClassName("ownerchoice")[0]
+  const toshowC = document.getElementById("newrent-choice")
+  const buttonback = document.getElementsByClassName('step')[0];
+  const buttonoption = document.getElementsByClassName('option')[0];
+
+  buttonoption.addEventListener("click", function () {
+    tohideC.classList.add("hide");
+    toshowC.classList.remove("hide");
+  });
+
+  buttonback.addEventListener("click", function () {
+    toshowC.classList.add("hide");
+    tohideC.classList.remove("hide");
+  });
+</script>

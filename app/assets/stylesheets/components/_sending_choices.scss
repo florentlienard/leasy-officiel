@@ -1,0 +1,54 @@
+.sending-choices {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  hr{
+
+    border:         none;
+    border-left:    1px solid rgba(200,200,200,0.5);
+    height:         150px;
+    width:          1px;
+    margin: 0px;
+  }
+  a:hover, a:visited, a:link, a:active {
+    text-decoration: none;
+  }
+}
+
+.labelmail {
+  font-weight: lighter;
+}
+
+.modal-header .close {
+  margin-top: -24px;
+}
+
+.modal-body {
+  padding-top: 0px;
+}
+
+.sending-choice {
+  // position: relative;
+  opacity: 0.7;
+  align-items: center;
+  margin: 20px;
+  h1 {
+    font-size: 20px;
+  }
+  .mail {
+    color: $brand-primary;
+  }
+
+  .pdf {
+    color: $leasyyellow;
+  }
+  .fa {
+    font-size: 90px;
+  }
+}
+
+.sending-choice:hover {
+  opacity: 1;
+  cursor: pointer;
+}
+
