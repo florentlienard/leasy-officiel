@@ -26,10 +26,10 @@ users.each { |u| u.destroy }
 
 # Création de l'utilisateur
 u = User.new()
-u.email = 'vincent.feildel@gmail.com'
+u.email = 'florent.lienard@gmail.com'
 u.password = 'azerty'
-u.first_name = 'Vincent'
-u.last_name = 'Feildel'
+u.first_name = 'Florent'
+u.last_name = 'Liénard'
 u.position = 'Gérant'
 u.save
 

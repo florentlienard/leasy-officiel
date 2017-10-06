@@ -14,9 +14,8 @@
     <%= f.input :password, required: false, :input_html => { class: 'session-form' } %>
     <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
   </div>
-
   <div class="form-actions">
-    <%= f.button :submit, "Log in" , html_options={class: "btn-log "}%>
+    <%= f.button :submit, "Log in" , html_options={class: "btn-log"}%>
   </div>
 <% end %>
     </div>
