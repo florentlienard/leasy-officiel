@@ -14,14 +14,14 @@ class PagesController < ApplicationController
     @nbr_urgent_t = Event.where(emergency_level: 'urgent').count
 
     # Circular progress bar data:
-    @percentage_done = ((@nbr_urgent.fdiv(@nbr_urgent_t) + @nbr_urgent_prog.fdiv(@nbr_urgent_t*2))*100).round
+    @percentage_done = ((@nbr_urgent.fdiv(@nbr_urgent_t) + @nbr_urgent_prog.fdiv(@nbr_urgent_t*2))*100)
 
-    @percentage_finished = (((@nbr_urgent_t - @nbr_urgent).fdiv(@nbr_urgent_t)) * 100).round
+    @percentage_finished = (((@nbr_urgent_t - @nbr_urgent).fdiv(@nbr_urgent_t)) * 100)
     p = 0
     Event.where(status: 'tenant_to_notify', emergency_level: 'urgent', to_do: true).each do |e|
       p += 1 if e.description != 'retard loyer'
     end
-    @percentage_progress = (p.fdiv(@nbr_urgent_t)*100).round
+    @percentage_progress = (p.fdiv(@nbr_urgent_t)*100)
     @percentage_done = (@percentage_progress/2) + @percentage_finished
 
     # Graph data:

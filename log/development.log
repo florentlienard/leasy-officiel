@@ -5676,3 +5676,86 @@ Migrating to AddSumRentToBalanceDays (20170831145549)
   [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
   [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "indices" ("app_date", "indice", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["app_date", "2007-07-01 00:00:00"], ["indice", 96.81], ["created_at", "2017-10-05 17:14:11.053530"], ["updated_at", "2017-10-05 17:14:11.053530"]]
   [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(6680565432604077315)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_advisory_unlock(6680565432604077315)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for 127.0.0.1 at 2017-10-06 09:59:17 +0200
+  [1m[35m (7.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PagesController#home as HTML
+  [1m[35m (7.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "events" WHERE "events"."description" = $1 AND "events"."to_do" = $2[0m  [["description", "révision de loyer"], ["to_do", "t"]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "events" WHERE "events"."description" = $1 AND "events"."to_do" = $2[0m  [["description", "retard loyer"], ["to_do", "t"]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "events" WHERE "events"."description" = $1 AND "events"."to_do" = $2[0m  [["description", "fin de bail"], ["to_do", "t"]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "events" WHERE "events"."to_do" = $1[0m  [["to_do", "t"]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "events" WHERE "events"."emergency_level" = $1 AND "events"."to_do" = $2[0m  [["emergency_level", "urgent"], ["to_do", "t"]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "events" WHERE "events"."emergency_level" = $1 AND "events"."to_do" = $2[0m  [["emergency_level", "urgent"], ["to_do", "t"]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "events" WHERE "events"."emergency_level" = $1[0m  [["emergency_level", "urgent"]]
+  [1m[36mEvent Load (0.6ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."status" = $1 AND "events"."emergency_level" = $2 AND "events"."to_do" = $3[0m  [["status", "tenant_to_notify"], ["emergency_level", "urgent"], ["to_do", "t"]]
+  [1m[36mBalanceDay Load (0.4ms)[0m  [1m[34mSELECT "balance_days".* FROM "balance_days"[0m
+  Rendering pages/home.html.erb within layouts/application
+  Rendered shared/_footer.html.erb (0.3ms)
+  Rendered shared/_mailfordemo.html.erb (0.4ms)
+  Rendered pages/_not_connected.html.erb (589.3ms)
+  Rendered pages/home.html.erb within layouts/application (593.1ms)
+Completed 200 OK in 709ms (Views: 624.6ms | ActiveRecord: 24.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-10-06 09:59:23 +0200
+Processing by PagesController#home as HTML
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "events" WHERE "events"."description" = $1 AND "events"."to_do" = $2[0m  [["description", "révision de loyer"], ["to_do", "t"]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "events" WHERE "events"."description" = $1 AND "events"."to_do" = $2[0m  [["description", "retard loyer"], ["to_do", "t"]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "events" WHERE "events"."description" = $1 AND "events"."to_do" = $2[0m  [["description", "fin de bail"], ["to_do", "t"]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "events" WHERE "events"."to_do" = $1[0m  [["to_do", "t"]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "events" WHERE "events"."emergency_level" = $1 AND "events"."to_do" = $2[0m  [["emergency_level", "urgent"], ["to_do", "t"]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "events" WHERE "events"."emergency_level" = $1 AND "events"."to_do" = $2[0m  [["emergency_level", "urgent"], ["to_do", "t"]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "events" WHERE "events"."emergency_level" = $1[0m  [["emergency_level", "urgent"]]
+  [1m[36mEvent Load (0.4ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."status" = $1 AND "events"."emergency_level" = $2 AND "events"."to_do" = $3[0m  [["status", "tenant_to_notify"], ["emergency_level", "urgent"], ["to_do", "t"]]
+  [1m[36mBalanceDay Load (0.3ms)[0m  [1m[34mSELECT "balance_days".* FROM "balance_days"[0m
+  Rendering pages/home.html.erb within layouts/application
+  Rendered shared/_footer.html.erb (0.3ms)
+  Rendered shared/_mailfordemo.html.erb (0.3ms)
+  Rendered pages/_not_connected.html.erb (10.6ms)
+  Rendered pages/home.html.erb within layouts/application (13.0ms)
+Completed 200 OK in 50ms (Views: 36.6ms | ActiveRecord: 2.7ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2017-10-06 09:59:25 +0200
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/sessions/new.html.erb within layouts/application (79.6ms)
+Completed 200 OK in 131ms (Views: 106.9ms | ActiveRecord: 2.4ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2017-10-06 09:59:36 +0200
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"RTVZl1NdwhUCWSlIgUIdUuggzcjwpvq5rp09Shr3CIGYRPumG/Y9ioQN/gVG7/2e+YDJlTMqVHa+MYdCtBT5+g==", "user"=>{"email"=>"vincent.feildel@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "vincent.feildel@gmail.com"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (7.6ms)[0m  [1m[33mUPDATE "users" SET "current_sign_in_at" = $1, "last_sign_in_at" = $2, "current_sign_in_ip" = $3, "last_sign_in_ip" = $4, "sign_in_count" = $5, "updated_at" = $6 WHERE "users"."id" = $7[0m  [["current_sign_in_at", "2017-10-06 07:59:36.822778"], ["last_sign_in_at", "2017-10-06 07:59:36.822778"], ["current_sign_in_ip", "127.0.0.1/32"], ["last_sign_in_ip", "127.0.0.1/32"], ["sign_in_count", 1], ["updated_at", "2017-10-06 07:59:36.824033"], ["id", 1]]
+  [1m[35m (1.1ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 175ms (ActiveRecord: 9.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-10-06 09:59:36 +0200
+Processing by PagesController#home as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "events" WHERE "events"."description" = $1 AND "events"."to_do" = $2[0m  [["description", "révision de loyer"], ["to_do", "t"]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "events" WHERE "events"."description" = $1 AND "events"."to_do" = $2[0m  [["description", "retard loyer"], ["to_do", "t"]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "events" WHERE "events"."description" = $1 AND "events"."to_do" = $2[0m  [["description", "fin de bail"], ["to_do", "t"]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "events" WHERE "events"."to_do" = $1[0m  [["to_do", "t"]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "events" WHERE "events"."emergency_level" = $1 AND "events"."to_do" = $2[0m  [["emergency_level", "urgent"], ["to_do", "t"]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "events" WHERE "events"."emergency_level" = $1 AND "events"."to_do" = $2[0m  [["emergency_level", "urgent"], ["to_do", "t"]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "events" WHERE "events"."emergency_level" = $1[0m  [["emergency_level", "urgent"]]
+  [1m[36mEvent Load (0.7ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."status" = $1 AND "events"."emergency_level" = $2 AND "events"."to_do" = $3[0m  [["status", "tenant_to_notify"], ["emergency_level", "urgent"], ["to_do", "t"]]
+  [1m[36mBalanceDay Load (0.3ms)[0m  [1m[34mSELECT "balance_days".* FROM "balance_days"[0m
+  Rendering pages/home.html.erb within layouts/application
+  Rendered pages/_progressbar.html.erb (0.5ms)
+  Rendered pages/home.html.erb within layouts/application (7.8ms)
+  Rendered shared/_nav_bar.html.erb (3.3ms)
+Completed 200 OK in 56ms (Views: 38.8ms | ActiveRecord: 3.8ms)
+
+
